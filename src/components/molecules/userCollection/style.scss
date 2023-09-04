@@ -1,0 +1,55 @@
+@import '/src/sass/variables.module.scss';
+@import '/src/sass/mixins.scss';
+
+.collection--title {
+    text-align: left; 
+    display: block;
+    margin-top: 59px;
+    margin-left: 50px;
+    max-width: 210px;
+    color: $colorFontWhite;
+    font-size: 22px;
+    font-weight: 500;
+
+    @include vp-1023 {
+        font-size: 18px;
+        margin-top: 43px;
+        margin-left: 26px;
+    } 
+}
+
+.collection--title::before {
+    content: '';
+    display: block;
+    width: 220px;
+    height: 1px;
+    background-color: $colorFontWhite;
+    position: absolute;
+    top: 46px;
+    left: 39px;
+
+    @include vp-1023 {
+        width: 164px;
+        top: 38px;
+        left: 19px;
+    } 
+}
+
+.collection--title::after {
+    content: '';
+    display: block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: $colorDecorBright;
+    position: absolute;
+    top: 70px;
+    left: 38px;
+
+    @include vp-1023 {
+        width: 5px;
+        height: 5px;
+        top: 52px;
+        left: 18px;
+    } 
+}

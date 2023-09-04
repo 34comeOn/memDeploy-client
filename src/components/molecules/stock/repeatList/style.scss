@@ -1,0 +1,18 @@
+@import '/src/sass/variables.module.scss';
+
+.title-wrapper {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    justify-content: space-between;
+    margin-bottom: -20px;
+    color: $colorFontLight;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.cards-counter {
+    margin-left: 5px;
+    letter-spacing: 2px;
+    font-weight: 400;
+}

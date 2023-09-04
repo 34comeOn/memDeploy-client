@@ -1,0 +1,51 @@
+@import '/src/sass/variables.module.scss';
+@import '/src/sass/mixins.scss';
+
+body {
+  margin: 0;
+  font-family: $ff-main-regular;
+  list-style: none;
+  overflow: inherit;
+}
+
+body[class="ReactModal__Body--open"] {
+  overflow: hidden;
+}
+
+.App {
+  text-align: center;
+  background-color: $colorBackgroundDark;
+  min-height: 100vh;
+  border-top: 1px solid transparent;
+  margin: 0;
+  padding: 0 25px;
+}
+
+.App--container {
+  display: flex;
+}
+
+.App--button__getData:hover {
+  background-color: $colorButtonHover;
+}
+
+.App--button__getData:active {
+  background-color: $colorButtonActive;
+}
+
+.App--button__wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  margin: 0 40px;
+
+  @include vp-1023 {
+    margin: 0 5px;
+  } 
+}
+
+body {
+  background-color: $colorBackgroundDark;
+}

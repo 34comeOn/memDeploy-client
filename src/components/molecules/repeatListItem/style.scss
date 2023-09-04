@@ -1,0 +1,20 @@
+@import '/src/sass/variables.module.scss';
+
+.list--item {
+    display: block;
+    width: max-content;
+    margin-bottom: 3px;
+    padding: 7px;
+    border-radius: 5px;
+    background-color: $colorStockItemBackground;
+    color: $colorFontDark;
+    cursor: pointer; 
+    max-width: 437px;
+    position: relative;
+    padding-right: 25px;
+}
+
+.list--item:hover {
+    background-color: $colorItemHover;
+    color: rgb(255, 255, 255);
+}

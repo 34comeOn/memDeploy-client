@@ -1,0 +1,21 @@
+@import '/src/sass/variables.module.scss';
+
+.card--title {
+    margin: 12px;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 400;
+    color: $colorFontLight;
+}
+
+.answer--container {
+    width: 400px;
+    min-height: 313px;
+    max-height: 500px;
+}
+
+.edit-buttons--container {
+    position: relative;
+    left: -60px;
+    bottom: 3px;
+}
