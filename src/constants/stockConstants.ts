@@ -143,8 +143,8 @@ export type TnavigationItem = {
 
 export const NAVIGATION_ITEMS: TnavigationItem[] = [
   {
-    title: 'Sign in/up',
-    path: 'sign_in&up',
+    title: 'Login / Registration',
+    path: 'login_registration',
     loggedStatusDependent: true,
     visibleWhenUserLoggedIn: false,
   },

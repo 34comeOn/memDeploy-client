@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Formik, Form } from 'formik';
 import { FormInput } from "../../molecules/formInput";
 import './style.scss';
-import { UseSubmitButtonToSignUp } from "../../../myHooks/myFormHooks/useSubmitButtonForSignUp";
-import { UseSubmitButtonToSignIn } from "../../../myHooks/myFormHooks/useSubmitButtonForSignIn";
-import { signInFormValidationSchema, signUpFormValidationSchema } from "../../../validationSchemas";
+import { UseSubmitButtonToRegister } from "../../../myHooks/myFormHooks/useSubmitButtonForRegistration";
+import { UseSubmitButtonToLogIn } from "../../../myHooks/myFormHooks/useSubmitButtonForLogIn";
+import { logInFormValidationSchema, registrationFormValidationSchema } from "../../../validationSchemas";
 import { ValidationErrorBox } from "../../atoms/validationErrorBox";
 import { PasswordInput } from "../../molecules/passwordInput";
 import { ForgotPasswordLink } from "../../atoms/forgotPasswordLink";
@@ -13,15 +13,15 @@ import { useWarningNotification } from "../../../myHooks/utillsHooks/useWarningN
 import { useRequestLoading } from "../../../myHooks/useRequestLoading";
 import { RESPONSE_ERROR_TITLE } from "../../../constants/stringConstants";
 
-export const SignInAndUpForm = () => {
-    const [isSignUpFormActive, setIsSignUpFormActive] = useState(false);
+export const LogInAndRegisterForm = () => {
+    const [isRegistrationFormActive, setIsRegistrationFormActive] = useState(false);
 
-    const [signUpcontextHolder, openSignUpNotification] = useWarningNotification(RESPONSE_ERROR_TITLE.SIGN_UP);
-    const [contextHolder, openNotification] = useWarningNotification(RESPONSE_ERROR_TITLE.SIGN_IN);
+    const [registrationContextHolder, openRegistrationNotification] = useWarningNotification(RESPONSE_ERROR_TITLE.REGISTRATION);
+    const [contextHolder, openNotification] = useWarningNotification(RESPONSE_ERROR_TITLE.LOG_IN);
     const {isLoading, onChangeLoadingStatus} = useRequestLoading();
 
-    const onSignUpHandler = UseSubmitButtonToSignUp(onChangeLoadingStatus, openSignUpNotification as ((descriptionText: string) => void));
-    const onSignInHandler = UseSubmitButtonToSignIn(onChangeLoadingStatus, openNotification as ((descriptionText: string) => void));
+    const onRegisterHandler = UseSubmitButtonToRegister(onChangeLoadingStatus, openRegistrationNotification as ((descriptionText: string) => void));
+    const onLogInHandler = UseSubmitButtonToLogIn(onChangeLoadingStatus, openNotification as ((descriptionText: string) => void));
     return(
         <Formik 
             initialValues={{ 
@@ -30,28 +30,28 @@ export const SignInAndUpForm = () => {
                 password:'', 
                 confirmPassword:'' 
             }}
-            validationSchema={isSignUpFormActive? signUpFormValidationSchema : signInFormValidationSchema}
+            validationSchema={isRegistrationFormActive? registrationFormValidationSchema : logInFormValidationSchema}
             validateOnBlur={false}
             validateOnChange={false}
             onSubmit={
-                isSignUpFormActive? onSignUpHandler: onSignInHandler
+                isRegistrationFormActive? onRegisterHandler: onLogInHandler
             }
         >
             {({ errors, touched, values })=>{
                 return(
-                    <Form className='sign-in--form'>
+                    <Form className='log-in--form'>
                         <>
-                            {signUpcontextHolder}
+                            {registrationContextHolder}
                         </>
                         <>
                             {contextHolder}
                         </>
-                        {isSignUpFormActive && <FormInput 
+                        {isRegistrationFormActive && <FormInput 
                             type='text' 
                             name='userName' 
                             labelValue='Name'
                         />}
-                        {isSignUpFormActive && errors.userName && touched.userName ? (
+                        {isRegistrationFormActive && errors.userName && touched.userName ? (
                             <ValidationErrorBox error={errors.userName} />
                         ) : null}
                         <FormInput 
@@ -72,24 +72,24 @@ export const SignInAndUpForm = () => {
                         {errors.password && touched.password ? (
                             <ValidationErrorBox error={errors.password} />
                         ) : null}
-                        {!isSignUpFormActive && <ForgotPasswordLink />}
-                        {isSignUpFormActive && <PasswordInput 
+                        {!isRegistrationFormActive && <ForgotPasswordLink />}
+                        {isRegistrationFormActive && <PasswordInput 
                             type='password' 
                             name='confirmPassword' 
                             labelValue='Confirm password'
                             value = {values.confirmPassword}
                         />}
-                        {isSignUpFormActive && errors.confirmPassword && touched.confirmPassword ? (
+                        {isRegistrationFormActive && errors.confirmPassword && touched.confirmPassword ? (
                             <ValidationErrorBox error={errors.confirmPassword} />
                         ) : null}
                         <button className='submit--button' type='submit'>
-                            {isSignUpFormActive? 'Sign up' : 'Sign in'}
+                            {isRegistrationFormActive? 'Register' : 'Log in'}
                         </ button>
                         <span className='toggle-button--span'>
-                            {!isSignUpFormActive? 'Don`t have an account yet?' : 'Have account?'}
+                            {!isRegistrationFormActive? 'Don`t have an account yet?' : 'Have account?'}
                         </span>
-                        <button className='toggle--sign-button' type='button' onClick={() => setIsSignUpFormActive(!isSignUpFormActive)}>
-                            {!isSignUpFormActive? 'Sign up' : 'Sign in'}
+                        <button className='toggle--sign-button' type='button' onClick={() => setIsRegistrationFormActive(!isRegistrationFormActive)}>
+                            {!isRegistrationFormActive? 'Registration' : 'Login'}
                         </ button>
                     </Form>
                 )

@@ -1,11 +1,11 @@
 import React from "react";
 import { CenterContainer } from "../../components/atoms/centerContainer";
-import { SignInAndUpForm } from "../../components/organizms/signInAndUpForm";
+import { LogInAndRegisterForm } from "../../components/organizms/logInAndRegisterForm";
 
-export const SignInPage = () => {
+export const LogInAndRegisterPage = () => {
     return(
         <CenterContainer>
-            <SignInAndUpForm />
+            <LogInAndRegisterForm />
         </ CenterContainer>
     )
 }

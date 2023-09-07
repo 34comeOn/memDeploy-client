@@ -4,7 +4,7 @@ import { ROUTS_CONSTANTS } from "../constants/stringConstants";
 import { CollectionPage } from "../pages/collectionPage";
 import { ForgotPasswordPage } from "../pages/forgotPasswordPage";
 import { MainPage } from "../pages/mainPage";
-import { SignInPage } from "../pages/signInPage";
+import { LogInAndRegisterPage } from "../pages/logInAndRegisterPage";
 
 export const AppRouter = () => {
     const routes: RouteObject[] = [
@@ -14,7 +14,7 @@ export const AppRouter = () => {
             children: [
                 {index: true, element: <MainPage /> },
                 {path: ROUTS_CONSTANTS.CURRENT_COLLECTION_PAGE, element: <CollectionPage /> },
-                {path: ROUTS_CONSTANTS.SIGN_IN_AND_UP_PAGE, element: <SignInPage /> },
+                {path: ROUTS_CONSTANTS.LOGIN_AND_REGISTRATION_PAGE, element: <LogInAndRegisterPage /> },
                 {path: ROUTS_CONSTANTS.FORGOT_PASSWORD_PAGE, element: <ForgotPasswordPage /> },
             ]
         }

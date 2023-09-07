@@ -2,7 +2,7 @@ import { TeditCollectionData } from '../myHooks/collectionHooks/useEditCollectio
 import { TcollectionItemData, TeditCollectionItemData, Tuser, TuserCollectionData } from '../utils/utils';
 import { rootAPI } from './rootApi';
 
-export type TsignInObject = {
+export type TlogInObject = {
   email: string, 
   password: string, 
 }
@@ -61,14 +61,14 @@ export const collectionDataAPI = rootAPI.injectEndpoints({
         };
       }
     }),
-    signInUser: build.mutation<Tuser, {path: string, signInObject: TsignInObject}>({
+    logInUser: build.mutation<Tuser, {path: string, logInObject: TlogInObject}>({
       query(args) {
         return {
           url: `${args.path}`,
           credentials: 'include',
           method: 'POST',
           headers: {'Content-Type': 'application/json;charset=utf-8'},
-          body: JSON.stringify(args.signInObject)
+          body: JSON.stringify(args.logInObject)
         };
       }
     }),

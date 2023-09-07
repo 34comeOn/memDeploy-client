@@ -2,8 +2,8 @@ export const MAIN_FILTER_CHECKBOX = 'all';
 
 export const GET_STOCK_COLLECTION_ENG_ENDPOINT = 'api/stock-collection-eng';
 export const GET_CURRENT_COLLECTION_ENDPOINT = 'api/traing-collection';
-export const SIGN_IN_USER_ENDPOINT = 'api/sign-in';
-export const SIGN_UP_USER_ENDPOINT = 'api/sign-up';
+export const LOG_IN_USER_ENDPOINT = 'api/log-in';
+export const REGISTER_USER_ENDPOINT = 'api/register';
 export const CREATE_NEW_COLLECTION_ENDPOINT = 'api/new-collection';
 export const EDIT_COLLECTION_ENDPOINT = 'api/edit-collection';
 export const CREATE_NEW_CARD_ENDPOINT = 'api/new-card';
@@ -35,7 +35,7 @@ export const MODAL_WINDOW_CONTENT_STRING_CONSTANTS = {
 export const ROUTS_CONSTANTS = {
     MAIN_PAGE: '/',
     CURRENT_COLLECTION_PAGE: 'collection',
-    SIGN_IN_AND_UP_PAGE: 'sign_in&up',
+    LOGIN_AND_REGISTRATION_PAGE: 'login_registration',
     FORGOT_PASSWORD_PAGE: 'forgot_password',
 }
 
@@ -74,9 +74,9 @@ export const RESPONSE_ERROR_TITLE = {
     CHOOSE_COLLECTION: 'Collection not loaded',
     DELETE: 'Delete failed',
     DONE: 'Progress not saved',
-    LOGOUT: 'Log out failed',
-    SIGN_IN: 'Sign in failed',
-    SIGN_UP: 'Sign up failed',
+    LOGOUT: 'Logout failed',
+    LOG_IN: 'Login failed',
+    REGISTRATION: 'Registration failed',
 }
 
 // export const RESPONSE_ERROR_TITLE = {
@@ -86,8 +86,8 @@ export const RESPONSE_ERROR_TITLE = {
 //     CHOOSE_COLLECTION: 'Не удалось загрузить коллекцию',
 //     DELETE: 'Не удалось удалить',
 //     DONE: 'Не удалось сохранить прогресс',
-//     SIGN_IN: 'Вход не выполнен',
-//     SIGN_UP: 'Регистрация не выполнена',
+//     LOG_IN: 'Вход не выполнен',
+//     REGISTRATION: 'Регистрация не выполнена',
 // }
 
 // export const RESPONSE_ERROR_TEXT = {
