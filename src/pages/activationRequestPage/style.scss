@@ -1,0 +1,20 @@
+@import '/src/sass/variables.module.scss';
+@import '/src/sass/mixins.scss';
+
+.activation-request--container {
+    display: flex;
+    flex-direction: column;
+}
+
+.activation-request--caption {
+    color: $colorFontLight;
+    font-size: 52px;
+    font-weight: 300;
+    margin: 40px auto;
+    text-align: center;
+
+    @include vp-1023 {
+        font-size: 32px;
+        margin: 22px auto;
+    } 
+}

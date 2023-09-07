@@ -37,6 +37,7 @@ export const ROUTS_CONSTANTS = {
     CURRENT_COLLECTION_PAGE: 'collection',
     LOGIN_AND_REGISTRATION_PAGE: 'login_registration',
     FORGOT_PASSWORD_PAGE: 'forgot_password',
+    ACTIVATION_REQUEST_PAGE: 'activation_request',
 }
 
 export const RADIO_BUTTON_NAME = {

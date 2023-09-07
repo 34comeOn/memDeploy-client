@@ -31,9 +31,10 @@ export const UseSubmitButtonToRegister = (onChangeLoadingStatus: (value: boolean
         getAllUserDataAfterRegistrationTriger({path:REGISTER_USER_ENDPOINT, putObj: newUserObject})
         .unwrap()
         .then(
-          () => {
+          (userEmail) => {
             onChangeLoadingStatus(false);
-            navigate('/');
+            // navigate('/');
+            alert(userEmail)
           },
           (error) => {
             if (error.status === 400) {
@@ -41,6 +42,11 @@ export const UseSubmitButtonToRegister = (onChangeLoadingStatus: (value: boolean
             } else {
               openRegistrationNotification(RESPONSE_ERROR_TEXT.SOMETHING_WENT_WRONG)
             }
+          }
+        )
+        .then(
+          () => {
+            navigate('/activation_request');
           }
         )
     }

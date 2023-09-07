@@ -154,11 +154,6 @@ export const NAVIGATION_ITEMS: TnavigationItem[] = [
     loggedStatusDependent: false,
   },
   {
-    title: 'Help',
-    path: '',
-    loggedStatusDependent: false,
-  },
-  {
     title: 'Contacts',
     path: '',
     loggedStatusDependent: false,
