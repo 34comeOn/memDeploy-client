@@ -12,7 +12,7 @@ const container = document.getElementById('root')!;
 const root = createRoot(container);
 
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <ForceRenderProvider >
         <Provider store={store}>
           <ThemeProvider theme={defaultTheme}>
@@ -22,5 +22,5 @@ root.render(
           </ThemeProvider>
         </Provider>
     </ForceRenderProvider>
-  </React.StrictMode>
+  // </React.StrictMode>
 );
