@@ -2,7 +2,9 @@
 
 .password-input--container {
     position: relative;
-    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    width: -webkit-fill-available;
 }
 
 .password-input--label {
@@ -14,7 +16,7 @@
 
 .form--password-input {
     min-height: 30px;
-    width: 382px;
+    width: -webkit-fill-available;
     margin-top: 10px;
     margin-left: 5px;
     border-radius: 5px;
