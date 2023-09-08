@@ -1,5 +1,12 @@
+@import '/src/sass/variables.module.scss';
+@import '/src/sass/mixins.scss';
+
 .category-item--select {
     margin-top: 10px;;
     margin-left: 5px;
-    width: 400px;
+    width: 255px;
+
+    @include vp-374 {
+        width: 170px;
+    } 
 }

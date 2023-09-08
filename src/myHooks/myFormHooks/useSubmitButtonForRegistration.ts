@@ -33,8 +33,8 @@ export const UseSubmitButtonToRegister = (onChangeLoadingStatus: (value: boolean
         .then(
           (userEmail) => {
             onChangeLoadingStatus(false);
-            // navigate('/');
-            alert(userEmail)
+            localStorage.setItem('activationRequestEmail', JSON.stringify(userEmail));
+            navigate('/activation_request');
           },
           (error) => {
             if (error.status === 400) {
@@ -42,11 +42,6 @@ export const UseSubmitButtonToRegister = (onChangeLoadingStatus: (value: boolean
             } else {
               openRegistrationNotification(RESPONSE_ERROR_TEXT.SOMETHING_WENT_WRONG)
             }
-          }
-        )
-        .then(
-          () => {
-            navigate('/activation_request');
           }
         )
     }

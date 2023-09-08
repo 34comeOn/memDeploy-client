@@ -1,10 +1,16 @@
 @import '/src/sass/variables.module.scss';
+@import '/src/sass/mixins.scss';
 
 .form--label {
     color: $colorFontWhite;
     margin-left: 40px;
     margin-top: 20px;
     cursor: pointer;
+
+    @include vp-374 {
+        margin-left: 30px;
+        font-size: 14px;
+    } 
 }
 
 .form--input {
@@ -20,6 +26,10 @@
     &:hover {
         background-color: $colorBackgroundLight;
     }
+
+    @include vp-374 {
+        min-height: 22px;
+    } 
 }
 
 .form--input::placeholder {

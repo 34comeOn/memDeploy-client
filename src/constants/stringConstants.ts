@@ -80,6 +80,15 @@ export const RESPONSE_ERROR_TITLE = {
     REGISTRATION: 'Registration failed',
 }
 
+export const ACTIVATION_REQUEST = {
+    TITLE: 'Please verify your email',
+    TEXT_INTRO: 'You are almoust there! We sent email to',
+    TEXT_TODO: 'Just click on the link in that email to complete your registration. If you do not see it, you may need to check your spam folder.',
+    TEXT_HELP: 'Need help? Contact us: ',
+}
+
+export const SUPPORT_EMAIL = 'memorizer.app.data@gmail.com';
+
 // export const RESPONSE_ERROR_TITLE = {
 //     CREATE_NEW_COLLECTION: 'Не получилось создать новую коллекцию',
 //     CREATE_NEW_CARD: 'Не получилось создать новую карточку',

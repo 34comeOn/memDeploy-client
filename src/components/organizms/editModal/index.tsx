@@ -13,12 +13,11 @@ ReactModal.setAppElement('#root');
 
 const modalStyles = {
     content: {
-        top: '50%',
-        left: '50%',
+        inset: '62% 40px 40px 50%',
         transform: 'translate(-50%, -50%)',
         maxWidth: '800px',
         minHeight: 'min-content',
-        minWidth: 'min-content',
+        width: 'min-content',
         backgroundColor: `${variables.colorBackgroundDark}`,
         borderRadius: '15px',
         padding: '20px',
@@ -35,7 +34,7 @@ export const EditModalWindow = () => {
         <Modal
             isOpen={modalViewState}
             style={modalStyles}
-            // overlayClassName='modal--overlay'
+            overlayClassName='modal--overlay'
         >
             <CloseButton onClick={closeModalWindow}/>
             {renderingComponentAsWindowContent}
