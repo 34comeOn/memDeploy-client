@@ -5,6 +5,7 @@ import { Navigation } from "../../molecules/navigation";
 import { useAppSelector } from "../../../app/hooks";
 import { getAccountStatusSelector, getUserNameSelector } from "../../../store/reducers/accountReducer";
 import { LogOutNavButton } from "../../molecules/logOutNavButton";
+import { DropdownNavigation } from "../../molecules/dropdownNavigation";
 
 export const Header = () => {
     const hasLoged = useAppSelector(getAccountStatusSelector);
@@ -14,6 +15,7 @@ export const Header = () => {
             <HeaderLogo />
             {hasLoged && <LogOutNavButton userName={userName}/>}
             <Navigation />
+            <DropdownNavigation />
         </StyledHeader>
     )
 }

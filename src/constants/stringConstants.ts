@@ -32,14 +32,6 @@ export const MODAL_WINDOW_CONTENT_STRING_CONSTANTS = {
     RENDER_ITEM_OF_COLLECTION: 'renderCollectionItem',
 }
 
-export const ROUTS_CONSTANTS = {
-    MAIN_PAGE: '/',
-    CURRENT_COLLECTION_PAGE: 'collection',
-    LOGIN_AND_REGISTRATION_PAGE: 'login_registration',
-    FORGOT_PASSWORD_PAGE: 'forgot_password',
-    ACTIVATION_REQUEST_PAGE: 'activation_request',
-}
-
 export const RADIO_BUTTON_NAME = {
     NO_CATEGORY: 'doNotPickCategory',
     SET_CATEGORY: 'createAndSetCategory',
@@ -118,3 +110,34 @@ export const RESPONSE_ERROR_TEXT = {
 }
 
 export const STOCK_DATA_USER_ID = '64e0dee9748fbea4c268073f';
+
+export const ROUTS_CONSTANTS = {
+    MAIN_PAGE: '/',
+    ALL_COLLECTIONS_PAGE: 'all_collections',
+    CURRENT_COLLECTION_PAGE: 'collection',
+    LOGIN_AND_REGISTRATION_PAGE: 'login_registration',
+    FORGOT_PASSWORD_PAGE: 'forgot_password',
+    ACTIVATION_REQUEST_PAGE: 'activation_request',
+    ABOUT_PAGE: 'about',
+    PROFILE_PAGE: 'profile',
+    SETTINGS_PAGE: 'settings',
+    SUPPORT_PAGE: 'support',
+}
+
+export const NAVIGATION_ITEMS_PATH = {
+    ALL_COLLECTIONS: `/${ROUTS_CONSTANTS.ALL_COLLECTIONS_PAGE}`,
+    LOGIN_REGISTRATION: `/${ROUTS_CONSTANTS.LOGIN_AND_REGISTRATION_PAGE}`,
+    ABOUT: `/${ROUTS_CONSTANTS.ABOUT_PAGE}`,
+    PROFILE: `/${ROUTS_CONSTANTS.PROFILE_PAGE}`,
+    SETTINGS: `/${ROUTS_CONSTANTS.SETTINGS_PAGE}`,
+    SUPPORT: `/${ROUTS_CONSTANTS.SUPPORT_PAGE}`,
+}
+
+export const NAVIGATION_ITEMS_TITLE = {
+    ALL_COLLECTIONS: 'Collections',
+    LOGIN_REGISTRATION: 'Login / Registration',
+    ABOUT: 'About',
+    PROFILE: 'Your profile',
+    SETTINGS: 'Settings',
+    SUPPORT: 'Support',
+}

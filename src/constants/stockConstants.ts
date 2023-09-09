@@ -2,6 +2,7 @@ import { ThunkDispatch, CombinedState, AnyAction, Dispatch } from "@reduxjs/tool
 import { CombinedState as CombinedStateApi } from "@reduxjs/toolkit/dist/query/core/apiState";
 import { TgroupForRepeat } from "../store/reducers/collectionGroupsReducer";
 import { TcollectionItemData } from "../utils/utils";
+import { NAVIGATION_ITEMS_PATH, NAVIGATION_ITEMS_TITLE } from "./stringConstants";
 
 export type Tdispatch = ThunkDispatch<CombinedState<{ accountSlice: { isAuthorized: boolean; userName: string; userEmail: string; }; collectionFiltersSlice: { filtersList: string[]; listOfCurrentFilters: string[]; }; collectionGroupsSlice: { repeatGroups: TgroupForRepeat[]; }; cardWindowSlice: { currentCard: TcollectionItemData; isCurrentCardVisible: boolean; isAnswerVisible: boolean; }; userCollectionsSlice: { allUserCollections: { _id: string; title: string; data: TcollectionItemData[]; }[]; }; rootAPI: CombinedStateApi<{}, never, "rootAPI">; }>, undefined, AnyAction> & Dispatch<AnyAction>
 
@@ -143,24 +144,31 @@ export type TnavigationItem = {
 
 export const NAVIGATION_ITEMS: TnavigationItem[] = [
   {
-    title: 'Login / Registration',
-    path: 'login_registration',
+    title: `${NAVIGATION_ITEMS_TITLE.LOGIN_REGISTRATION}`,
+    path: `${NAVIGATION_ITEMS_PATH.LOGIN_REGISTRATION}`,
     loggedStatusDependent: true,
     visibleWhenUserLoggedIn: false,
   },
   {
-    title: 'About',
-    path: '',
+    title: `${NAVIGATION_ITEMS_TITLE.ALL_COLLECTIONS}`,
+    path: `${NAVIGATION_ITEMS_PATH.ALL_COLLECTIONS}`,
+    loggedStatusDependent: true,
+    visibleWhenUserLoggedIn: true,
+  },
+  {
+    title: `${NAVIGATION_ITEMS_TITLE.ABOUT}`,
+    path: `${NAVIGATION_ITEMS_PATH.ABOUT}`,
     loggedStatusDependent: false,
   },
   {
-    title: 'Contacts',
-    path: '',
+    title: `${NAVIGATION_ITEMS_TITLE.SUPPORT}`,
+    path: `${NAVIGATION_ITEMS_PATH.SUPPORT}`,
     loggedStatusDependent: false,
   },
 ];
 
 export const MAX_REPEATLIST_ITEM_TITLE_LENGTH = 46;
+export const MAX_USER_NAME_LENGTH = 15;
 
 export const ONE_HOUR_IN_MILLISECONDS = 3600000;
 
