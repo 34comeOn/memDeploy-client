@@ -15,6 +15,14 @@ export const DropdownNavigation = () => {
         {
           key: '1',
           label: (
+             <a rel="noopener noreferrer" href={`${NAVIGATION_ITEMS_PATH.MAIN}`}> 
+              {NAVIGATION_ITEMS_TITLE.MAIN}
+            </a>
+          ),
+        },
+        {
+          key: '2',
+          label: (
              <a rel="noopener noreferrer" href={`${NAVIGATION_ITEMS_PATH.LOGIN_REGISTRATION}`}> 
               {NAVIGATION_ITEMS_TITLE.LOGIN_REGISTRATION}
             </a>
@@ -22,7 +30,7 @@ export const DropdownNavigation = () => {
           disabled: hasLoged,
         },
         {
-          key: '2',
+          key: '3',
           label: (
              <a rel="noopener noreferrer" href={`${NAVIGATION_ITEMS_PATH.ALL_COLLECTIONS}`}> 
               {NAVIGATION_ITEMS_TITLE.ALL_COLLECTIONS}
@@ -31,7 +39,7 @@ export const DropdownNavigation = () => {
           disabled: !hasLoged,
         },
         {
-          key: '3',
+          key: '4',
           label: (
              <a rel="noopener noreferrer" href={`${NAVIGATION_ITEMS_PATH.ABOUT}`}> 
               {NAVIGATION_ITEMS_TITLE.ABOUT}
@@ -39,7 +47,7 @@ export const DropdownNavigation = () => {
           ),
         },
         {
-          key: '4',
+          key: '5',
           label: (
              <a rel="noopener noreferrer" href={`${NAVIGATION_ITEMS_PATH.SUPPORT}`}> 
               {NAVIGATION_ITEMS_TITLE.SUPPORT}

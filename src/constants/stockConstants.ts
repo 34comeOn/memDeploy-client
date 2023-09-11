@@ -144,6 +144,11 @@ export type TnavigationItem = {
 
 export const NAVIGATION_ITEMS: TnavigationItem[] = [
   {
+    title: `${NAVIGATION_ITEMS_TITLE.MAIN}`,
+    path: `${NAVIGATION_ITEMS_PATH.MAIN}`,
+    loggedStatusDependent: false,
+  },
+  {
     title: `${NAVIGATION_ITEMS_TITLE.LOGIN_REGISTRATION}`,
     path: `${NAVIGATION_ITEMS_PATH.LOGIN_REGISTRATION}`,
     loggedStatusDependent: true,
