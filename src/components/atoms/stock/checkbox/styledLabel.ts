@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { device } from '../../../../global/theme/index';
+import variables from '../../../../sass/variables.module.scss';
 
 export const StyledLabel = styled.label`
-    font-size: 18px;
-    color: blanchedalmond;
+    font-size: 15px;
+    color: ${variables.colorFontDark};
     cursor: pointer;
     display: flex;
     margin-top: 15px;

@@ -143,3 +143,9 @@ export const NAVIGATION_ITEMS_TITLE = {
     SETTINGS: 'Settings',
     SUPPORT: 'Support',
 }
+
+export const BUTTON_TITLE = {
+    FILTERS: 'Filters',
+    NEW_CARD: 'New card',
+    NEW_CARD_SHORT: 'New',
+}

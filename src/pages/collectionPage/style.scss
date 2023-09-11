@@ -23,4 +23,24 @@
         font-size: 32px;
         margin: 22px auto;
     } 
+
+    @include vp-767 {
+        font-size: 22px;
+        margin: 20px auto;
+    } 
+
+    @include vp-374 {
+        font-size: 18px;
+        margin: 15px auto;
+    } 
 }
+
+.repeat-menu--button-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: max-content;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 30px;
+  }

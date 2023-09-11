@@ -16,8 +16,8 @@ export const StockCheckbox = ({labelValue,handleOnChange, ...props}: TCheckbox) 
 
     return (
         <StyledLabel>
-            {cutTitle(labelValue, 14)}
             <StyledCheckbox checked={isCurrentCheckboxChecked} onChange={handleOnChange} type="checkbox" {...props}/>
+            {cutTitle(labelValue, 14)}
         </StyledLabel>
     )
 } 

@@ -1,4 +1,5 @@
 @import '/src/sass/variables.module.scss';
+@import '/src/sass/mixins.scss';
 
 .title-wrapper {
     display: flex;
@@ -9,6 +10,18 @@
     color: $colorFontLight;
     font-weight: 400;
     font-size: 20px;
+
+    @include vp-767 {
+        font-size: 18px;
+        height: 40px;
+        margin-bottom: -17px;
+    } 
+
+    @include vp-374 {
+        font-size: 16px;
+        height: 25px;
+        margin-bottom: -15px;
+    } 
 }
 
 .cards-counter {
