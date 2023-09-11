@@ -1,4 +1,5 @@
 @import '/src/sass/variables.module.scss';
+@import '/src/sass/mixins.scss';
 
 .card--title {
     margin: 12px;
@@ -9,9 +10,20 @@
 }
 
 .answer--container {
-    width: 400px;
+    width: 560px;
     min-height: 313px;
     max-height: 500px;
+    padding: 15px 10px;
+
+    @include vp-767 {
+        width: 88vw;
+        padding: 5px;
+    } 
+
+    @include vp-374 {
+        padding: 5px;
+        width: 86vw;
+    }
 }
 
 .edit-buttons--container {

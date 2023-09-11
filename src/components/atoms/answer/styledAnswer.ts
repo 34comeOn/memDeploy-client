@@ -6,7 +6,7 @@ type TisVisible = {
 }
 
 export const StyledAnswer = styled.pre<TisVisible>`
-    width: 400px; 
+    width: -webkit-fill-available;
     height: 283px; 
     max-height: 283px; 
     overflow: scroll;

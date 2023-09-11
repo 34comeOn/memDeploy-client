@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import variables from '../../../../sass/variables.module.scss';
+import { device } from '../../../../global/theme/index';
 
 export const StyledCard = styled.div`
-    width: 500px;
+    width: -webkit-fill-available;
     min-height: 500px;
     max-heigth: 650px;
     height: min-content;
@@ -16,4 +17,8 @@ export const StyledCard = styled.div`
     border-radius: 12px;
     position: sticky;
     top: 20px;
+
+    @media ${device.laptop} { 
+        padding: 5px;
+    }
 `
