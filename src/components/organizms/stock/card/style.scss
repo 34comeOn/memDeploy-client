@@ -27,7 +27,15 @@
 }
 
 .edit-buttons--container {
-    position: relative;
-    left: -60px;
-    bottom: 3px;
+    position: absolute;
+    right: 290px;
+    top: 63px;
+
+    @include vp-1023 {
+        right: 200px;
+    } 
+
+    @include vp-767 {
+        right: 195px;
+    } 
 }
