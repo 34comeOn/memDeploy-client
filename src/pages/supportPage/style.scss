@@ -1,0 +1,42 @@
+@import '/src/sass/variables.module.scss';
+@import '/src/sass/mixins.scss';
+
+.support-request--container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 635px;
+
+    @include vp-1023 {
+        width: 400px;
+    } 
+}
+
+.support-request--caption {
+    color: $colorFontLight;
+    font-size: 32px;
+    font-weight: 300;
+    margin: 40px auto;
+    text-align: center;
+
+    @include vp-1023 {
+        font-size: 22px;
+        margin: 22px auto;
+    } 
+}
+
+.support-request--text {
+    color: $colorFontWhite;
+    font-size: 20px;
+    text-align: center;
+    margin: 10px;
+
+    @include vp-1023 {
+        font-size: 16px;
+        margin: 6px;
+    } 
+}
+
+.support-request--email {
+    color: $colorFontLight;
+}

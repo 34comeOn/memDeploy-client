@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../app/hooks";
-import { RESPONSE_ERROR_TEXT, LOG_IN_USER_ENDPOINT } from "../../constants/stringConstants";
+import { RESPONSE_ERROR_TEXT, LOG_IN_USER_ENDPOINT, ROUTS_CONSTANTS } from "../../constants/stringConstants";
 import { collectionDataAPI } from "../../RTKApi/collectionDataApi";
 import { logIn } from "../../store/reducers/accountReducer";
 import { setUserBasicCollectionsInfo } from "../../store/reducers/userCollectionsReducer";
@@ -33,7 +33,7 @@ export const UseSubmitButtonToLogIn = (onChangeLoadingStatus: (value: boolean)=>
             onChangeLoadingStatus(false);
             dispatch(logIn({userName: userData.userName, userEmail: userData.email,userId: userData._id || ' '}));
             dispatch(setUserBasicCollectionsInfo(cutBasicUserCollectionsInfo(userData.userCollectionsData)));
-            navigate('/');
+            navigate(`/${ROUTS_CONSTANTS.ALL_COLLECTIONS_PAGE}`);
           },
           (error) => {
             onChangeLoadingStatus(false)

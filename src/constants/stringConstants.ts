@@ -79,6 +79,12 @@ export const ACTIVATION_REQUEST = {
     TEXT_HELP: 'Need help? Contact us: ',
 }
 
+export const SUPPORT_PAGE = {
+    TITLE: 'Contact us',
+    TEXT_INTRO: 'Got a question, need a help? We would love to hear from you!',
+    TEXT_HELP: 'Contact our support team: ',
+}
+
 export const SUPPORT_EMAIL = 'memorizer.app.data@gmail.com';
 
 // export const RESPONSE_ERROR_TITLE = {
@@ -148,4 +154,8 @@ export const BUTTON_TITLE = {
     FILTERS: 'Filters',
     NEW_CARD: 'New card',
     NEW_CARD_SHORT: 'New',
+}
+
+export const ROUT_PROTECTION_TEXT = {
+    ALL_COLLECTIONS_TEXT: 'Please login to use this page!',
 }

@@ -6,6 +6,8 @@ import { ForgotPasswordPage } from "../pages/forgotPasswordPage";
 import { MainPage } from "../pages/mainPage";
 import { LogInAndRegisterPage } from "../pages/logInAndRegisterPage";
 import { ActivationRequestPage } from "../pages/activationRequestPage";
+import { SupportPage } from "../pages/supportPage";
+import { AllCollectionsPage } from "../pages/allCollectionsPage";
 
 export const AppRouter = () => {
     const routes: RouteObject[] = [
@@ -14,10 +16,12 @@ export const AppRouter = () => {
             element: <App />,
             children: [
                 {index: true, element: <MainPage /> },
+                {path: ROUTS_CONSTANTS.ALL_COLLECTIONS_PAGE, element: <AllCollectionsPage /> },
                 {path: ROUTS_CONSTANTS.CURRENT_COLLECTION_PAGE, element: <CollectionPage /> },
                 {path: ROUTS_CONSTANTS.LOGIN_AND_REGISTRATION_PAGE, element: <LogInAndRegisterPage /> },
                 {path: ROUTS_CONSTANTS.FORGOT_PASSWORD_PAGE, element: <ForgotPasswordPage /> },
                 {path: ROUTS_CONSTANTS.ACTIVATION_REQUEST_PAGE, element: <ActivationRequestPage /> },
+                {path: ROUTS_CONSTANTS.SUPPORT_PAGE, element: <SupportPage /> },
             ]
         }
     ];
