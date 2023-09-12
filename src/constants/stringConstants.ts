@@ -160,3 +160,10 @@ export const BUTTON_TITLE = {
 export const ROUT_PROTECTION_TEXT = {
     ALL_COLLECTIONS_TEXT: 'Please login to use this page!',
 }
+
+export const DELETE_CONFIRM = {
+    DELETE_COLLECTION_TITLE: 'Delete the collection',
+    DELETE_COLLECTION_TEXT: 'Are you sure to delete this collection forever?',
+    DELETE_CARD_TITLE: 'Delete the card',
+    DELETE_CARD_TEXT: 'Are you sure to delete this card forever?',
+}
