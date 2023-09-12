@@ -1,6 +1,6 @@
+import React from "react";
 import { PlusSquareOutlined } from "@ant-design/icons";
 import { Button } from "antd";
-import React from "react";
 import { useAppDispatch } from "../../../app/hooks";
 import { BUTTON_TITLE, MODAL_WINDOW_CONTENT_STRING_CONSTANTS } from "../../../constants/stringConstants";
 import { setContentForModalWindow, showModalWindow } from "../../../store/reducers/modalWindowReducer";

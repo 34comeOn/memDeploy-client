@@ -1,6 +1,7 @@
 import React from "react";
 import { useAppSelector } from "../../app/hooks";
 import { AddNewCollectionItemButton } from "../../components/atoms/addNewCollectionItemButton";
+import { GoBackButton } from "../../components/atoms/goBackButton";
 import { BasicPopover } from "../../components/molecules/popover";
 import { RepeatContainer } from "../../components/organizms/repeatContainer";
 import { getAccountStatusSelector } from "../../store/reducers/accountReducer";
@@ -16,6 +17,7 @@ export const CollectionPage = () => {
                 Training {currentCollection.collectionTitle} collection
             </h1>
             <div className='repeat-menu--button-wrapper '>
+                <GoBackButton />
                 {accountStatus && <AddNewCollectionItemButton />}
                 <BasicPopover />
             </div>

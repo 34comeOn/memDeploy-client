@@ -151,6 +151,7 @@ export const NAVIGATION_ITEMS_TITLE = {
 }
 
 export const BUTTON_TITLE = {
+    GO_BACK: 'Back',
     FILTERS: 'Filters',
     NEW_CARD: 'New card',
     NEW_CARD_SHORT: 'New',
