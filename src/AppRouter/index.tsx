@@ -8,6 +8,7 @@ import { LogInAndRegisterPage } from "../pages/logInAndRegisterPage";
 import { ActivationRequestPage } from "../pages/activationRequestPage";
 import { SupportPage } from "../pages/supportPage";
 import { AllCollectionsPage } from "../pages/allCollectionsPage";
+import { AboutPage } from "../pages/aboutPage";
 
 export const AppRouter = () => {
     const routes: RouteObject[] = [
@@ -22,6 +23,7 @@ export const AppRouter = () => {
                 {path: ROUTS_CONSTANTS.FORGOT_PASSWORD_PAGE, element: <ForgotPasswordPage /> },
                 {path: ROUTS_CONSTANTS.ACTIVATION_REQUEST_PAGE, element: <ActivationRequestPage /> },
                 {path: ROUTS_CONSTANTS.SUPPORT_PAGE, element: <SupportPage /> },
+                {path: ROUTS_CONSTANTS.ABOUT_PAGE, element: <AboutPage /> },
             ]
         }
     ];
