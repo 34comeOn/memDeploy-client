@@ -167,3 +167,12 @@ export const DELETE_CONFIRM = {
     DELETE_CARD_TITLE: 'Delete the card',
     DELETE_CARD_TEXT: 'Are you sure to delete this card forever?',
 }
+
+export const PAGE_CONTENT = {
+    MAIN_PAGE_TITLE: 'Welcome to Memorizer',
+    MAIN_PAGE_ADVANTAGE_FIRST: 'Make learning fun and attractive for your brain',
+    MAIN_PAGE_ADVANTAGE_SECOND: 'Your data always in touch and ready for repeat',
+    MAIN_PAGE_ADVANTAGE_THIRD: 'Build and enjoy your progress',
+    MAIN_PAGE_TRY: 'Try our stock collections to check',
+    MAIN_PAGE_METHOD: 'OUR MEMORIZING METHOD',
+}
