@@ -29,7 +29,7 @@ export const RepeatCounter = ({item}: {item: TcollectionItemData}) => {
     return(
         <StyledRrepeatContainer containerBackgroundColor={deliverBackgroundColorForContainer(item.collectionItemTimesBeenRepeated) || 'rgb(218 51 51)'}>
             {item.collectionItemTimesBeenRepeated}
-                {(penaltyCount > 0) && <Snackbar style={{position: 'absolute', top: '10px'}} 
+                {(penaltyCount > 0) && <Snackbar style={{position: 'absolute', top: '10px', left: '23px'}} 
                 open={open} 
                 autoHideDuration={AUTO_HIDE_DURATION.PUNISHMENT} 
                 onClose={handleClose}>
@@ -37,7 +37,7 @@ export const RepeatCounter = ({item}: {item: TcollectionItemData}) => {
                         -{penaltyCount}
                     </div>
                 </Snackbar>}
-                {(item._id === trainedCardId) && <Snackbar style={{position: 'absolute', top: '10px'}} 
+                {(item._id === trainedCardId) && <Snackbar style={{position: 'absolute', top: '10px', left: '23px'}} 
                 open={open} 
                 autoHideDuration={AUTO_HIDE_DURATION.PROGRESS} 
                 onClose={handleClose}>

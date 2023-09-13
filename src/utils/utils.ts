@@ -333,3 +333,16 @@ export const makeOverlayProgress = (currentCollectionId: string, currentCardId: 
         localStorage.setItem(currentCollectionId, JSON.stringify([...collectionDataOverlay, newItemOverlay]));
     }
 }
+
+
+export const cutWords = (title: string, maxLength: number ) => {
+    const cuttedWordsTitle = title.split(' ').map((word: string) => {
+        if (word.length > maxLength) {
+            return `${word.slice(0, maxLength)}...`
+        }
+
+        return word
+    });
+
+    return cuttedWordsTitle.join(' ')
+}

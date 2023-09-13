@@ -1,7 +1,6 @@
 import React from "react";
-import { cutTitle, TcollectionItemData } from "../../../utils/utils";
+import { cutWords, TcollectionItemData } from "../../../utils/utils";
 import { StyledRepeatListItem } from "./styledRepeatListItem";
-import { MAX_REPEATLIST_ITEM_TITLE_LENGTH } from "../../../constants/stockConstants";
 import './style.scss';
 import { RepeatCounter } from "../repeatCounter";
 
@@ -11,8 +10,8 @@ type TrepeatListItem = {
 }
 
 export const RepeatListItem = ({onClick, item} :TrepeatListItem) => {
-    const itemTitle = cutTitle(item.collectionItemTitle,MAX_REPEATLIST_ITEM_TITLE_LENGTH);
-
+    const itemTitle = cutWords(item.collectionItemTitle, 25);
+    
     return(
         <StyledRepeatListItem 
             color={item.collectionItemColor || 'white'}

@@ -7,6 +7,14 @@
     font-size: 26px;
     font-weight: 400;
     color: $colorFontLight;
+
+    @include vp-767 {
+        font-size: 20px;
+    } 
+
+    @include vp-374 {
+        font-size: 16px;
+    }
 }
 
 .answer--container {
@@ -29,13 +37,19 @@
 .edit-buttons--container {
     position: absolute;
     right: 290px;
-    top: 63px;
+    bottom: 470px;
 
     @include vp-1023 {
         right: 200px;
+        bottom: 445px;
     } 
 
     @include vp-767 {
         right: 195px;
+        bottom: 430px;
+    } 
+    @include vp-374 {
+        right: 200px;
+        bottom: 440px;
     } 
 }
