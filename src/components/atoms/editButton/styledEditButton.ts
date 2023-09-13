@@ -10,7 +10,7 @@ export const StyledEditButton = styled.button`
     background-color: transparent;
     border-radius: 5px;
     cursor: pointer;
-    margin-left: 10px;
+    margin-left: 2px;
     position: absolute;
     top: 11px;
     left: 180px;
@@ -24,17 +24,16 @@ export const StyledEditButton = styled.button`
     &::after {
         content: "";
         position: absolute;
-        left: 2px;
+        left: 0;
         display: block;
         width: 28px;
         height: 28px;
-        top: 2px;
+        top: 0;
         background-image: url('${url}');
         background-size: contain;
         background-repeat: no-repeat;
 
         @media ${device.laptop} { 
-            left: 2px;
             width: 18px;
             height: 18px;
         }

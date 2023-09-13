@@ -1,4 +1,5 @@
 @import '/src/sass/variables.module.scss';
+@import '/src/sass/mixins.scss';
 
 .form--radio-input__container {
     display: flex;
@@ -8,12 +9,13 @@
     margin-top: 30px;
 }
 
-.new-collection--form-item {
+.new-card--form-item {
     min-height: 300px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     width: 400px;
+    max-width: 440px;
     margin: 15px auto;
     background-color: $colorBackgroundDark;
     justify-content: space-evenly;
@@ -22,9 +24,18 @@
     transition: margin-right 2s ease-in-out;
     border-radius: 15px;
     border: 1px solid $colorBackgroundRepeatList;
+
+    @include vp-767 {
+        padding: 15px 10px;
+        width: 80vw;
+    } 
+
+    @include vp-374 {
+        margin: -2px auto;
+    }
 }
 
-.submit-item--button {
+.new-card--submit-button {
     height: 40px;
     width: 140px;
     background-color: $colorMenuBright;
@@ -41,6 +52,16 @@
     &:active {
         background-color: $colorButtonActive;
     }
+
+    @include vp-767 {
+        margin-right: auto;
+    } 
+    
+    @include vp-374 {
+        height: 32px;
+        width: 120px;
+        margin-top: 23px;
+    } 
 }
 
 .form--radio-label {
@@ -49,6 +70,11 @@
     cursor: pointer;
     max-width: 320px;
     margin-left: 15px;
+
+    @include vp-374 {
+        font-size: 14px;
+        margin-left: 5px;
+    } 
 }
 
 

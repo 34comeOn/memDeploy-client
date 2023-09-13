@@ -1,18 +1,32 @@
 @import '/src/sass/variables.module.scss';
+@import '/src/sass/mixins.scss';
 
 .new-collection--form {
-    min-height: 300px;
+    min-height: 270px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 400px;
-    min-width: 400px;
+    width: 54vw;
+    max-width: 400px;
     margin: 15px auto;
     background-color: $colorBackgroundDark;
     justify-content: space-evenly;
     padding: 20px;
     border-radius: 15px;
     border: 1px solid $colorBackgroundRepeatList;
+
+    @include vp-767 {
+        padding: 15px 10px;
+        width: 88vw;
+    } 
+
+    @include vp-374 {
+        padding: 10px 6px;
+        min-height: 250px;
+        margin-top: 10px;
+        width: 88vw;
+        min-height: 225px;
+    } 
 }
 
 .submit--button {
@@ -31,4 +45,10 @@
     &:active {
         background-color: $colorButtonActive;
     }
+
+    @include vp-374 {
+        height: 32px;
+        width: 120px;
+        margin-top: 23px;
+    } 
 }

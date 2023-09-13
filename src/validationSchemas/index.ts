@@ -61,7 +61,7 @@ export const forgotPasswordFormValidationSchema = yup.object().shape({
     email: yup.string().email(EMAIL_INVALID_WARNING).required(FIELD_REQUIRED_WARNING), 
 });
 
-export const signInFormValidationSchema = yup.object().shape({
+export const logInFormValidationSchema = yup.object().shape({
     email: yup.string().email(EMAIL_INVALID_WARNING).required(FIELD_REQUIRED_WARNING), 
     password: yup
     .string()
@@ -69,7 +69,7 @@ export const signInFormValidationSchema = yup.object().shape({
     .matches(PASSWORD_REGEX, LOGIN_OR_PASSWORD_WRONG_WARNING),
 });
 
-export const signUpFormValidationSchema = yup.object().shape({
+export const registrationFormValidationSchema = yup.object().shape({
     email: yup.string().email(EMAIL_INVALID_WARNING).required(FIELD_REQUIRED_WARNING), 
     userName: yup
     .string()

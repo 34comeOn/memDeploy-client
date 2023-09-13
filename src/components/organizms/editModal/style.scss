@@ -1,8 +1,12 @@
+@import '/src/sass/variables.module.scss';
+@import '/src/sass/mixins.scss';
+
 .modal--overlay {
-    // position: fixed;
-    // top: 0;
-    // left: 0;
-    // right: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    overflow-y: scroll;
     bottom: 0;
-    // background-color: rgba(226, 24, 24, 0.455);
+    background-color: rgba(204, 204, 204, 0.672);
 }

@@ -1,0 +1,16 @@
+@import '/src/sass/variables.module.scss';
+@import '/src/sass/mixins.scss';
+
+.go-back--button {
+    background-color: $colorBackgroundRepeatList;
+    border: none;
+    box-shadow: 0px 2px 9px -4px black;
+    color: $colorFontWhite;
+    width: 100px;
+    margin-right: 30px;
+
+    @include vp-424 {
+        margin-right: 20px;
+        width: 40px;
+    } 
+}

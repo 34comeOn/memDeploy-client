@@ -8,21 +8,35 @@ import { getModalWindowContentTitleSelector, getModalWindowViewSelector } from "
 import ReactModal from "react-modal";
 import { useCloseModalWindowButton } from "../../../myHooks/useCloseModalWindowButton";
 import { getReactElementForModalWindowContent } from "../../../myHooks/useCurrentContentForModalWindow";
+import { device } from '../../../global/theme/index';
+import { useMediaQuery } from 'react-responsive';
 
 ReactModal.setAppElement('#root');
 
-const modalStyles = {
+const modalStylesLaptop = {
     content: {
-        top: '50%',
-        left: '50%',
+        inset: '62% 40px 40px 50%',
         transform: 'translate(-50%, -50%)',
         maxWidth: '800px',
         minHeight: 'min-content',
-        minWidth: 'min-content',
+        width: 'min-content',
         backgroundColor: `${variables.colorBackgroundDark}`,
         borderRadius: '15px',
         padding: '20px',
         paddingBottom: '35px',
+    },
+}
+
+const modalStylesTablet = {
+    content: {
+        inset: '62% 40px 40px 50%',
+        transform: 'translate(-50%, -50%)',
+        maxWidth: '800px',
+        minHeight: 'min-content',
+        width: 'min-content',
+        backgroundColor: `${variables.colorBackgroundDark}`,
+        borderRadius: '15px',
+        padding: '7px',
     },
 }
 
@@ -31,11 +45,13 @@ export const EditModalWindow = () => {
     const modalWindowContent = useAppSelector(getModalWindowContentTitleSelector);
     const closeModalWindow = useCloseModalWindowButton();
     const renderingComponentAsWindowContent = getReactElementForModalWindowContent(modalWindowContent)
+
+    const isMobile = useMediaQuery({ query: `${device.tablet}`});
     return(
         <Modal
             isOpen={modalViewState}
-            style={modalStyles}
-            // overlayClassName='modal--overlay'
+            style={isMobile? modalStylesTablet: modalStylesLaptop}
+            overlayClassName='modal--overlay'
         >
             <CloseButton onClick={closeModalWindow}/>
             {renderingComponentAsWindowContent}

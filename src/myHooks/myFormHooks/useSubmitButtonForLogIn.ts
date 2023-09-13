@@ -1,31 +1,31 @@
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../app/hooks";
-import { RESPONSE_ERROR_TEXT, SIGN_IN_USER_ENDPOINT } from "../../constants/stringConstants";
+import { RESPONSE_ERROR_TEXT, LOG_IN_USER_ENDPOINT, ROUTS_CONSTANTS } from "../../constants/stringConstants";
 import { collectionDataAPI } from "../../RTKApi/collectionDataApi";
 import { logIn } from "../../store/reducers/accountReducer";
 import { setUserBasicCollectionsInfo } from "../../store/reducers/userCollectionsReducer";
 import { cutBasicUserCollectionsInfo } from "../../utils/utils";
 
-export interface IsignInForm {
+export interface IlogInForm {
     email: string, 
     userName: string, 
     password: string, 
     confirmPassword: string, 
 };
 
-export const UseSubmitButtonToSignIn = (onChangeLoadingStatus: (value: boolean)=> void, openNotification: ((descriptionText: string) => void)) => {
+export const UseSubmitButtonToLogIn = (onChangeLoadingStatus: (value: boolean)=> void, openNotification: ((descriptionText: string) => void)) => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
-    const [getAllUserDataAfterSignInTriger] = collectionDataAPI.useSignInUserMutation();
-    return (values: IsignInForm) => {
-        const signInObject = {
+    const [getAllUserDataAfterLogInTriger] = collectionDataAPI.useLogInUserMutation();
+    return (values: IlogInForm) => {
+        const logInObject = {
             email: values.email,
             password: values.password,
         }
 
         onChangeLoadingStatus(true)
-        getAllUserDataAfterSignInTriger({path:SIGN_IN_USER_ENDPOINT, signInObject: signInObject})
+        getAllUserDataAfterLogInTriger({path:LOG_IN_USER_ENDPOINT, logInObject})
         .unwrap()
         .then(
           (userData) => {
@@ -33,7 +33,7 @@ export const UseSubmitButtonToSignIn = (onChangeLoadingStatus: (value: boolean)=
             onChangeLoadingStatus(false);
             dispatch(logIn({userName: userData.userName, userEmail: userData.email,userId: userData._id || ' '}));
             dispatch(setUserBasicCollectionsInfo(cutBasicUserCollectionsInfo(userData.userCollectionsData)));
-            navigate('/');
+            navigate(`/${ROUTS_CONSTANTS.ALL_COLLECTIONS_PAGE}`);
           },
           (error) => {
             onChangeLoadingStatus(false)

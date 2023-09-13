@@ -4,15 +4,18 @@ import { MODAL_WINDOW_CONTENT_STRING_CONSTANTS } from "../../../constants/string
 import { editCollection, IeditCollection } from "../../../store/reducers/editReducer";
 import { setContentForModalWindow, showModalWindow } from "../../../store/reducers/modalWindowReducer";
 import { StyledEditButton } from "../editButton/styledEditButton";
+import './style.scss';
 
 export const EditCollectionButton = ({_id, color, title}: IeditCollection) => {
     const dispatch = useDispatch();
 
     return(
-        <StyledEditButton onClick={()=>{
-            dispatch(editCollection({_id, color, title}))
-            dispatch(setContentForModalWindow(MODAL_WINDOW_CONTENT_STRING_CONSTANTS.EDIT_COLLECTION))
-            dispatch(showModalWindow())
-        }} />
+        <div className="edit-button--wraper__for-collection">
+            <StyledEditButton onClick={()=>{
+                dispatch(editCollection({_id, color, title}))
+                dispatch(setContentForModalWindow(MODAL_WINDOW_CONTENT_STRING_CONSTANTS.EDIT_COLLECTION))
+                dispatch(showModalWindow())
+            }} />
+        </div>
     )
 }

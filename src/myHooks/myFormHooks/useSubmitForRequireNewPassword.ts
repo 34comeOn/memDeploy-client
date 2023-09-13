@@ -1,6 +1,6 @@
 // import { useNavigate } from "react-router-dom";
 // import { useAppDispatch } from "../../app/hooks";
-// import { SIGN_UP_USER_ENDPOINT } from "../../constants/stringConstants";
+// import { REGISTER_USER_ENDPOINT } from "../../constants/stringConstants";
 // import { collectionDataAPI } from "../../RTKApi/collectionDataApi";
 // import { logIn } from "../../store/reducers/accountReducer";
 // import { setUserBasicCollectionsInfo } from "../../store/reducers/userCollectionsReducer";
@@ -13,14 +13,14 @@ export interface IforgotPasswordForm {
 export const UseSubmitForRequireNewPassword = () => {
     // const dispatch = useAppDispatch();
     // const navigate = useNavigate();
-    // const [getAllUserDataAfterSignUpTriger] = collectionDataAPI.usePostNewUserMutation();
+    // const [getAllUserDataAfterRegistrationTriger] = collectionDataAPI.usePostNewUserMutation();
 
     return (values: IforgotPasswordForm) => {
         // const newUserObject = {
         //     email: values.email,
         // }
 
-        // getAllUserDataAfterSignUpTriger({path:SIGN_UP_USER_ENDPOINT, putObj: newUserObject})
+        // getAllUserDataAfterRegistrationTriger({path:REGISTER_USER_ENDPOINT, putObj: newUserObject})
         // .unwrap()
         // .then(
         //   (userData) => {

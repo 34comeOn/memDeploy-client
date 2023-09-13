@@ -31,6 +31,8 @@ $colorHighRepeatLevel: rgb(43, 131, 59);
 
 $vp-320:                            320px;
 $vp-375:                            375px;
+$vp-425:                            425px;
+$vp-500:                            500px;
 $vp-768:                            768px;
 $vp-830:                            830px;
 $vp-1024:                           1024px;
@@ -53,6 +55,7 @@ $vp-1920:                           1920px;
     colorButtonActive: $colorButtonActive;
     colorDecorBright: $colorDecorBright;
     colorFontWhite: $colorFontWhite;
+    colorFontDark: $colorFontDark;
     colorBorder: $colorBorder;
     colorLowRepeatLevel: $colorLowRepeatLevel;
     colorMiddleRepeatLevel: $colorMiddleRepeatLevel;

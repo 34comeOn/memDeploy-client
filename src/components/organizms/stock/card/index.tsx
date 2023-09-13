@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
 import { getAnswerVisibilitySelector, getCurrentCardSelector, toggleAnswerVisibility } from '../../../../store/reducers/cardWindowReducer';
 import { useDoneClickButton } from '../../../../myHooks/useDoneClickButton';
 import './style.scss';
-import { checkAdminPowers, getCurrentUserEmailFromLStorage } from '../../../../utils/utils';
+import { checkAdminPowers, cutWords, getCurrentUserEmailFromLStorage } from '../../../../utils/utils';
 import { getCurrentCollectionSelector } from '../../../../store/reducers/userCollectionsReducer';
 import { DeleteCardButton } from '../../../atoms/deleteCardButton';
 import { EditCardButton } from '../../../atoms/editCardButton';
@@ -40,10 +40,27 @@ export const StockCardWindow = () => {
         dispatch(toggleAnswerVisibility())
     }
 
+    const cuttedWordsTitle = cutWords(currentCard.collectionItemTitle, 30);
+
     return (  
         <StyledCard>
-            <span className='card--title'>{currentCard.collectionItemTitle}</span>
+            <span className='card--title'>{cuttedWordsTitle}</span>
             <ShowButton hasClicked={isAnswerVisible} onClick={onShowClickHandle}/>
+            <CustomSpinner isLoading={isLoading} />
+            <div className='edit-buttons--container'>
+                {userHasAdminPowersForCollection && <EditCardButton 
+                    _id={currentCard._id?? ''} 
+                    cardTitle={currentCard.collectionItemTitle} 
+                    cardAnswer={currentCard.collectionItemAnswer} 
+                    cardCategory={currentCard.collectionItemCategory?? ''} 
+                    cardColor={currentCard.collectionItemColor?? ''} 
+                />}
+                {userHasAdminPowersForCollection && <DeleteCardButton 
+                    currentCard={currentCard} 
+                    onChangeLoadingStatus={onChangeLoadingStatus}
+                    openNotification={openNotification as ((descriptionText: string) => void)}
+                />}
+            </div>
             <div className='answer--container' >
                 <Answer isVisible={isAnswerVisible}>
                     {currentCard.collectionItemAnswer}
@@ -55,21 +72,6 @@ export const StockCardWindow = () => {
             <>
                 {doneContextHolder}
             </>
-            <div className='edit-buttons--container'>
-                {userHasAdminPowersForCollection && <EditCardButton 
-                _id={currentCard._id?? ''} 
-                cardTitle={currentCard.collectionItemTitle} 
-                cardAnswer={currentCard.collectionItemAnswer} 
-                cardCategory={currentCard.collectionItemCategory?? ''} 
-                cardColor={currentCard.collectionItemColor?? ''} 
-            />}
-                <CustomSpinner isLoading={isLoading} />
-                {userHasAdminPowersForCollection && <DeleteCardButton 
-                currentCard={currentCard} 
-                onChangeLoadingStatus={onChangeLoadingStatus}
-                openNotification={openNotification as ((descriptionText: string) => void)}
-                />}
-            </div>
             <DoneButton disabled={currentCard.collectionItemTimesBeenRepeated >= 6} onClick={accountStatus? onDoneClickHandle: onDoneClickStockItem}/>
         </StyledCard>
     )

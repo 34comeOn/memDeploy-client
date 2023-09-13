@@ -1,0 +1,28 @@
+@import '/src/sass/variables.module.scss';
+@import '/src/sass/mixins.scss';
+
+.collections-page--container {
+    display: flex;
+    flex-direction: column;
+}
+
+.collections-page--caption {
+    color: $colorFontLight;
+    font-size: 52px;
+    font-weight: 300;
+    margin: 40px auto;
+    text-align: center;
+
+    @include vp-1023 {
+        font-size: 32px;
+        margin: 22px auto;
+    } 
+
+    @include vp-767 {
+        font-size: 24px;
+    } 
+
+    @include vp-374 {
+        font-size: 18px;
+    } 
+}

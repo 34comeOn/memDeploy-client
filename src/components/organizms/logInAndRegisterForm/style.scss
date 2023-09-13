@@ -1,12 +1,12 @@
 @import '/src/sass/variables.module.scss';
+@import '/src/sass/mixins.scss';
 
-.sign-in--form {
+.log-in--form {
     min-height: 300px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     width: 400px;
-    margin: auto;
     background-color: $colorBackgroundRepeatList;
     justify-content: space-evenly;
     padding: 20px;
@@ -30,6 +30,12 @@
     &:active {
         background-color: $colorButtonActive;
     }
+
+    @include vp-374 {
+        height: 32px;
+        width: 120px;
+        margin-top: 23px;
+    } 
 }
 
 .toggle--sign-button {
@@ -49,6 +55,13 @@
     &:active {
         background-color: $colorButtonActive;
     }
+
+    
+    @include vp-374 {
+        height: 32px;
+        width: 120px;
+        margin-top: 23px;
+    } 
 }
 
 .toggle-button--span {

@@ -39,7 +39,7 @@ export const NewCardForm = () => {
         >
             {({errors, touched, validateField, values})=>{
                 return(
-                    <Form className='new-collection--form-item'>
+                    <Form className='new-card--form-item'>
                         <>
                             {contextHolder}
                             <FormInput 
@@ -61,7 +61,7 @@ export const NewCardForm = () => {
                             <CustomSpinner isLoading={isLoading} />
                             <Field name="categoryRadioButtons" component={CardRadioButtonsOrganizm} />
                             {/* <Field name="cardTags" component={TagInput} /> */}
-                            <button className='submit-item--button' type='submit' onClick={() => {
+                            <button className='new-card--submit-button' type='submit' onClick={() => {
                                 if (values.categoryRadioButtons === RADIO_BUTTON_NAME.SET_CATEGORY) {
                                     validateField('collectionItemCategory')
                                 }

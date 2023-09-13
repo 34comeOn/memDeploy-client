@@ -2,8 +2,8 @@ export const MAIN_FILTER_CHECKBOX = 'all';
 
 export const GET_STOCK_COLLECTION_ENG_ENDPOINT = 'api/stock-collection-eng';
 export const GET_CURRENT_COLLECTION_ENDPOINT = 'api/traing-collection';
-export const SIGN_IN_USER_ENDPOINT = 'api/sign-in';
-export const SIGN_UP_USER_ENDPOINT = 'api/sign-up';
+export const LOG_IN_USER_ENDPOINT = 'api/log-in';
+export const REGISTER_USER_ENDPOINT = 'api/register';
 export const CREATE_NEW_COLLECTION_ENDPOINT = 'api/new-collection';
 export const EDIT_COLLECTION_ENDPOINT = 'api/edit-collection';
 export const CREATE_NEW_CARD_ENDPOINT = 'api/new-card';
@@ -30,13 +30,6 @@ export const MODAL_WINDOW_CONTENT_STRING_CONSTANTS = {
     CREATE_NEW_CARD: 'newCard',
     EDIT_CARD: 'editCard',
     RENDER_ITEM_OF_COLLECTION: 'renderCollectionItem',
-}
-
-export const ROUTS_CONSTANTS = {
-    MAIN_PAGE: '/',
-    CURRENT_COLLECTION_PAGE: 'collection',
-    SIGN_IN_AND_UP_PAGE: 'sign_in&up',
-    FORGOT_PASSWORD_PAGE: 'forgot_password',
 }
 
 export const RADIO_BUTTON_NAME = {
@@ -74,10 +67,25 @@ export const RESPONSE_ERROR_TITLE = {
     CHOOSE_COLLECTION: 'Collection not loaded',
     DELETE: 'Delete failed',
     DONE: 'Progress not saved',
-    LOGOUT: 'Log out failed',
-    SIGN_IN: 'Sign in failed',
-    SIGN_UP: 'Sign up failed',
+    LOGOUT: 'Logout failed',
+    LOG_IN: 'Login failed',
+    REGISTRATION: 'Registration failed',
 }
+
+export const ACTIVATION_REQUEST = {
+    TITLE: 'Please verify your email',
+    TEXT_INTRO: 'You are almoust there! We sent email to',
+    TEXT_TODO: 'Just click on the link in that email to complete your registration. If you do not see it, you may need to check your spam folder.',
+    TEXT_HELP: 'Need help? Contact us: ',
+}
+
+export const SUPPORT_PAGE = {
+    TITLE: 'Contact us',
+    TEXT_INTRO: 'Got a question, need a help? We would love to hear from you!',
+    TEXT_HELP: 'Contact our support team: ',
+}
+
+export const SUPPORT_EMAIL = 'memorizer.app.data@gmail.com';
 
 // export const RESPONSE_ERROR_TITLE = {
 //     CREATE_NEW_COLLECTION: 'Не получилось создать новую коллекцию',
@@ -86,8 +94,8 @@ export const RESPONSE_ERROR_TITLE = {
 //     CHOOSE_COLLECTION: 'Не удалось загрузить коллекцию',
 //     DELETE: 'Не удалось удалить',
 //     DONE: 'Не удалось сохранить прогресс',
-//     SIGN_IN: 'Вход не выполнен',
-//     SIGN_UP: 'Регистрация не выполнена',
+//     LOG_IN: 'Вход не выполнен',
+//     REGISTRATION: 'Регистрация не выполнена',
 // }
 
 // export const RESPONSE_ERROR_TEXT = {
@@ -108,3 +116,63 @@ export const RESPONSE_ERROR_TEXT = {
 }
 
 export const STOCK_DATA_USER_ID = '64e0dee9748fbea4c268073f';
+
+export const ROUTS_CONSTANTS = {
+    MAIN_PAGE: '/',
+    ALL_COLLECTIONS_PAGE: 'all_collections',
+    CURRENT_COLLECTION_PAGE: 'collection',
+    LOGIN_AND_REGISTRATION_PAGE: 'login_registration',
+    FORGOT_PASSWORD_PAGE: 'forgot_password',
+    ACTIVATION_REQUEST_PAGE: 'activation_request',
+    ABOUT_PAGE: 'about',
+    PROFILE_PAGE: 'profile',
+    SETTINGS_PAGE: 'settings',
+    SUPPORT_PAGE: 'support',
+}
+
+export const NAVIGATION_ITEMS_PATH = {
+    MAIN:`${ROUTS_CONSTANTS.MAIN_PAGE}`,
+    ALL_COLLECTIONS: `/${ROUTS_CONSTANTS.ALL_COLLECTIONS_PAGE}`,
+    LOGIN_REGISTRATION: `/${ROUTS_CONSTANTS.LOGIN_AND_REGISTRATION_PAGE}`,
+    ABOUT: `/${ROUTS_CONSTANTS.ABOUT_PAGE}`,
+    PROFILE: `/${ROUTS_CONSTANTS.PROFILE_PAGE}`,
+    SETTINGS: `/${ROUTS_CONSTANTS.SETTINGS_PAGE}`,
+    SUPPORT: `/${ROUTS_CONSTANTS.SUPPORT_PAGE}`,
+}
+
+export const NAVIGATION_ITEMS_TITLE = {
+    MAIN: 'Main',
+    ALL_COLLECTIONS: 'Collections',
+    LOGIN_REGISTRATION: 'Login / Registration',
+    ABOUT: 'About',
+    PROFILE: 'Your profile',
+    SETTINGS: 'Settings',
+    SUPPORT: 'Support',
+}
+
+export const BUTTON_TITLE = {
+    GO_BACK: 'Back',
+    FILTERS: 'Filters',
+    NEW_CARD: 'New card',
+    NEW_CARD_SHORT: 'New',
+}
+
+export const ROUT_PROTECTION_TEXT = {
+    ALL_COLLECTIONS_TEXT: 'Please login to use this page!',
+}
+
+export const DELETE_CONFIRM = {
+    DELETE_COLLECTION_TITLE: 'Delete the collection',
+    DELETE_COLLECTION_TEXT: 'Are you sure to delete this collection forever?',
+    DELETE_CARD_TITLE: 'Delete the card',
+    DELETE_CARD_TEXT: 'Are you sure to delete this card forever?',
+}
+
+export const PAGE_CONTENT = {
+    MAIN_PAGE_TITLE: 'Welcome to Memorizer',
+    MAIN_PAGE_ADVANTAGE_FIRST: 'Make learning fun and attractive for your brain',
+    MAIN_PAGE_ADVANTAGE_SECOND: 'Your data always in touch and ready for repeat',
+    MAIN_PAGE_ADVANTAGE_THIRD: 'Build up and enjoy your progress',
+    MAIN_PAGE_TRY: 'Try our stock collections to check',
+    MAIN_PAGE_METHOD: 'OUR MEMORIZING METHOD',
+}

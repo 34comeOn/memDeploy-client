@@ -1,19 +1,19 @@
 import { useNavigate } from "react-router-dom";
-import { RESPONSE_ERROR_TEXT, SIGN_UP_USER_ENDPOINT } from "../../constants/stringConstants";
+import { RESPONSE_ERROR_TEXT, REGISTER_USER_ENDPOINT } from "../../constants/stringConstants";
 import { collectionDataAPI } from "../../RTKApi/collectionDataApi";
 
-export interface IsignInForm {
+export interface IlogInForm {
     email: string, 
     userName: string, 
     password: string, 
     confirmPassword: string,
 }
 
-export const UseSubmitButtonToSignUp = (onChangeLoadingStatus: (value: boolean)=> void, openSignUpNotification: ((descriptionText: string) => void)) => {
+export const UseSubmitButtonToRegister = (onChangeLoadingStatus: (value: boolean)=> void, openRegistrationNotification: ((descriptionText: string) => void)) => {
     const navigate = useNavigate();
-    const [getAllUserDataAfterSignUpTriger] = collectionDataAPI.usePostNewUserMutation();
+    const [getAllUserDataAfterRegistrationTriger] = collectionDataAPI.usePostNewUserMutation();
 
-    return (values: IsignInForm) => {
+    return (values: IlogInForm) => {
         const newUserObject = {
             email: values.email,
             password: values.password,
@@ -28,18 +28,19 @@ export const UseSubmitButtonToSignUp = (onChangeLoadingStatus: (value: boolean)=
 
         onChangeLoadingStatus(true);
 
-        getAllUserDataAfterSignUpTriger({path:SIGN_UP_USER_ENDPOINT, putObj: newUserObject})
+        getAllUserDataAfterRegistrationTriger({path:REGISTER_USER_ENDPOINT, putObj: newUserObject})
         .unwrap()
         .then(
-          () => {
+          (userEmail) => {
             onChangeLoadingStatus(false);
-            navigate('/');
+            localStorage.setItem('activationRequestEmail', JSON.stringify(userEmail));
+            navigate('/activation_request');
           },
           (error) => {
             if (error.status === 400) {
-              openSignUpNotification(RESPONSE_ERROR_TEXT.EMAIL_ALREADY_EXIST)
+              openRegistrationNotification(RESPONSE_ERROR_TEXT.EMAIL_ALREADY_EXIST)
             } else {
-              openSignUpNotification(RESPONSE_ERROR_TEXT.SOMETHING_WENT_WRONG)
+              openRegistrationNotification(RESPONSE_ERROR_TEXT.SOMETHING_WENT_WRONG)
             }
           }
         )

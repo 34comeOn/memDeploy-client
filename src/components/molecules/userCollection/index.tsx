@@ -3,7 +3,7 @@ import { ChooseCollectionButton } from "../../atoms/chooseCollectionButton";
 import { StyledUserCollection } from "./styledUserCollection";
 import variables from '../../../sass/variables.module.scss';
 import './style.scss';
-import { checkAdminPowers, getCurrentUserEmailFromLStorage } from "../../../utils/utils";
+import { checkAdminPowers, cutWords, getCurrentUserEmailFromLStorage } from "../../../utils/utils";
 import { DeleteCollectionButton } from "../../atoms/deleteCollectionButton";
 import { EditCollectionButton } from "../../atoms/editCollectionButton";
 import { CustomSpinner } from "../../atoms/customSpinner";
@@ -25,6 +25,8 @@ export const UserCollection = ({title, color, adminList, _id}: TuserCollection) 
     const currentUserEmailFromLStorage = getCurrentUserEmailFromLStorage();
     const userHasAdminPowersForCollection = checkAdminPowers(currentUserEmailFromLStorage?? '', adminList?? []);
 
+    const shortTitle = cutWords(title, 19);
+
     return(
         <StyledUserCollection color={color}>
             {userHasAdminPowersForCollection && <EditCollectionButton _id={_id} title={title} color={color} />}
@@ -34,7 +36,7 @@ export const UserCollection = ({title, color, adminList, _id}: TuserCollection) 
             } 
             _id={_id} />}
             <span className='collection--title'> 
-                {title}
+                {shortTitle}
             </span>
             {isLoading && <CustomSpinner isLoading={isLoading} />}
             <>

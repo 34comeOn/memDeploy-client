@@ -1,8 +1,9 @@
 @import '/src/sass/variables.module.scss';
+@import '/src/sass/mixins.scss';
 
 .list--item {
     display: block;
-    width: max-content;
+    width: fit-content;
     margin-bottom: 3px;
     padding: 7px;
     border-radius: 5px;
@@ -11,7 +12,8 @@
     cursor: pointer; 
     max-width: 437px;
     position: relative;
-    padding-right: 25px;
+    padding-right: 15px;
+    margin-right: 20px;
 }
 
 .list--item:hover {

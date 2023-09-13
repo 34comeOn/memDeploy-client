@@ -1,4 +1,5 @@
 @import '/src/sass/variables.module.scss';
+@import '/src/sass/mixins.scss';
 
 .close-button {
     position: relative;
@@ -28,8 +29,21 @@
         top: 10px;
         background-color: $colorBackgroundLight;
         transform: rotate(-43deg);
-
     }
+
+    @include vp-374 {
+        &::before {
+            left: 5px;
+            width: 24px;
+            top: 12px;
+        }
+    
+        &::after {
+            left: 5px;
+            width: 24px;
+            top: 12px;
+        }
+    } 
 
     &:hover {
         &::before {
