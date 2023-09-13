@@ -8,7 +8,7 @@ export const MAX_ANSWER_LENGTH = 1500;
 
 export const NAME_REGEX = /^[A-Za-zA-Яа-яЁё,\s.'-]+$/;
 export const TITLE_REGEX = /^[0-9A-Za-zA-Яа-яЁё,.\s'@#$!?%^&*-]+$/;
-export const TEXT_AREA_REGEX = /^[0-9A-Za-zA-Яа-яЁё,.\s!"'<>/=@#;:)($%^&*-]+$/;
+export const TEXT_AREA_REGEX = /^[0-9A-Za-zA-Яа-яЁё,.\s!"'<>/+=@#;:)($%^&*-]+$/;
 export const PASSWORD_REGEX = /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!-@#$%^&*]{6,}/g;
 export const PASSWORD_PROHIBITED_REGEX = /^[0-9A-Za-zA,!-@#$%^&*]+$/;
 
@@ -31,7 +31,7 @@ export const MIN_LENGTH_NAME_WARNING = 'Not enough symbols';
 
 export const TITLE_REGEX_WARNING = "Only letters, digits and signs ,.@#!$%^&*'- can be used";
 // export const TITLE_REGEX_WARNING = "Можно использовать только буквы, цифры и знаки ,.@#!$%^&*'-";
-export const TEXT_AREA_REGEX_WARNING = "Only letters, digits and signs ,.@<>=/#!$;:)(%^&*'- can be used";
+export const TEXT_AREA_REGEX_WARNING = "Only letters, digits and signs ,.@<+>=/#!$;:)(%^&*'- can be used";
 // export const TEXT_AREA_REGEX_WARNING = "Можно использовать только буквы, цифры и знаки ,.@<>=/#!$;:)(%^&*'-";
 export const NAME_REGEX_WARNING = 'The name can only consist of letters';
 // export const NAME_REGEX_WARNING = 'Имя может состоять только из букв';
