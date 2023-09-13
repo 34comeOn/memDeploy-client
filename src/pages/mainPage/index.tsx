@@ -5,6 +5,7 @@ import { NodeIndexOutlined, RocketOutlined, SmileOutlined } from "@ant-design/ic
 import { useMediaQuery } from 'react-responsive';
 import './style.scss';
 import { device } from "../../global/theme";
+import { Link } from "react-router-dom";
 
 export const MainPage = () => {
     const isMobile = useMediaQuery({ query: `${device.mobileS}`});
@@ -30,6 +31,11 @@ export const MainPage = () => {
                 {!isMobile && <RocketOutlined />}
                 <span className="main-page--advantage__text">
                     {PAGE_CONTENT.MAIN_PAGE_ADVANTAGE_THIRD}
+                </span>
+            </div>
+            <div className="main-page--advantage__container">
+                <span className="main-page--suggest__text">
+                    {PAGE_CONTENT.MAIN_PAGE_TRY} <Link className="main-page--suggest__link" to={'/about'}>{PAGE_CONTENT.MAIN_PAGE_METHOD}</Link>
                 </span>
             </div>
             <MainPageMenu />
