@@ -105,7 +105,6 @@
     color: $colorFontWhite;
 
     padding: 8px;
-    border-radius: 13px;
 
     @include vp-1023 {
         font-size: 18px;
@@ -113,38 +112,108 @@
     } 
 
     @include vp-767 {
-        border-radius: 8px;
-        font-size: 13px;
+        font-size: 15px;
         margin-left: 40px;
     } 
 
+    @include vp-599 {
+        font-size: 12px;
+    } 
+
+    @include vp-499 {
+        font-size: 14px;
+        padding: 0px;
+        margin-left: 45px;
+    } 
+
     @include vp-424 {
-        border-radius: 6px;
-        font-size: 11px;
-        margin-left: 30px;
+        font-size: 12px;
     } 
 
     @include vp-374 {
-        padding: 4px;
         font-size: 11px;
-        // margin-left: 30px;
+        margin-left: 37px;
+    } 
+
+    @include vp-319 {
+        margin-left: 24px;
     } 
 }
 
 .main-page--suggest__link {
     color: $colorFontWhite;
-    background-color: #6e99d7;
-    border-radius: 8px;
     padding: 5px;
     box-sizing: border-box;
+    position: relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 30px;
+        left: 6px;
+        display: block;
+        width: 290px;
+        height: 1px;
+        background-color: $colorFontWhite;
+    }
 
     &:hover {
-        outline: 1px solid #d2bbbb;
+        color: $colorFontLight;
+
+        &::after {
+            height: 2px;
+            background-color: $colorFontLight;
+        }
     }
 
     @include vp-1023 {
-        display: block;
         margin-top: 6px;
+
+        &::after {
+            width: 260px;
+        }
+    } 
+
+    @include vp-767 {
+        &::after {
+            top: 25px;
+            width: 215px;
+        }
+        
+    } 
+
+    @include vp-599 {
+        &::after {
+            top: 21px;
+            left: 6px;
+            width: 173px;
+        }
+    } 
+
+    @include vp-499 {
+        padding: 0px;
+        display: block;
+
+        &::after {
+            top: 19px;
+            left: 2px;
+            width: 200px;
+        }
+    } 
+
+    @include vp-424 {
+        &::after {
+            top: 16px;
+            left: 1px;
+            width: 173px;
+        }
+    } 
+
+    @include vp-374 {
+        &::after {
+            top: 15px;
+            width: 158px;
+        }
     } 
 }
 
