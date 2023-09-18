@@ -39,6 +39,13 @@ export const MainPage = () => {
                 </span>
             </div>
             <MainPageMenu />
+            <div className="main-page--advantage__container">
+                <span className="main-page--account__text">
+                    {PAGE_CONTENT.MAIN_PAGE_ACCOUNT_FIRST} 
+                    <Link className="main-page--account__link" to={'/login_registration'}>{PAGE_CONTENT.MAIN_PAGE_ACCOUNT_LINK}</Link>
+                    {PAGE_CONTENT.MAIN_PAGE_ACCOUNT_SECOND} 
+                </span>
+            </div>
         </div>
     )
 }
