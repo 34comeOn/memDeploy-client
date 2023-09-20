@@ -261,7 +261,6 @@ const applyPunishmentForOverlay = (overlayBeforePunishing: TcollectionItemData[]
         const maximumPenalty = timesBeenRepeated - (card.collectionItemInvincibleCount?? 0);
         const {penaltyCount, addingHoursDueToPenalty} = getPenaltyForLatePractice(hoursSinceLastPractice, timesBeenRepeated, maximumPenalty);
         
-        
         card.collectionItemTimesBeenRepeated = timesBeenRepeated - penaltyCount;
         card.collectionItemRepeatedTimeStamp += convertHoursToSeconds(addingHoursDueToPenalty);
 
@@ -273,24 +272,8 @@ const applyPunishmentForOverlay = (overlayBeforePunishing: TcollectionItemData[]
 
 export const addOverlay = (currentCollection: TuserCollectionData) => {
     const collectionDataOverlay = JSON.parse(localStorage.getItem(currentCollection._id?? '')?? JSON.stringify([]));
-    
-    // let punishedCollectionData = collectionDataOverlay.map((card: TcollectionItemData) => {
-    //     const timesBeenRepeated = card.collectionItemTimesBeenRepeated;
-    //     const hoursSinceLastPractice = getHoursSinceRepeat(card.collectionItemRepeatedTimeStamp);
-    //     const maximumPenalty = timesBeenRepeated - (card.collectionItemInvincibleCount?? 0);
-    //     const {penaltyCount, addingHoursDueToPenalty} = getPenaltyForLatePractice(hoursSinceLastPractice, timesBeenRepeated, maximumPenalty);
-        
-        
-    //     card.collectionItemTimesBeenRepeated = timesBeenRepeated - penaltyCount;
-    //     card.collectionItemRepeatedTimeStamp += convertHoursToSeconds(addingHoursDueToPenalty);
-        
-    //     card.collectionItemPenaltyCount = penaltyCount;
-        
-    //     return card
-    // })
-    
+
     localStorage.setItem(currentCollection._id?? '', JSON.stringify(applyPunishmentForOverlay(collectionDataOverlay)))
-    
     const collectionDataOverlayAfterPunishment = JSON.parse(localStorage.getItem(currentCollection._id?? '')?? JSON.stringify([]));
     const collectionData = currentCollection.collectionData;
     let newCollectionData: TcollectionItemData[] = [];
