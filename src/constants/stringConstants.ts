@@ -169,7 +169,7 @@ export const DELETE_CONFIRM = {
 }
 
 export const PAGE_CONTENT = {
-    MAIN_PAGE_TITLE: 'Welcome to Memorizer',
+    MAIN_PAGE_TITLE: 'App designed for data structuring, storing and intervallar reviewing',
     MAIN_PAGE_ADVANTAGE_FIRST: 'Make learning fun and attractive for your brain',
     MAIN_PAGE_ADVANTAGE_SECOND: 'Your data always in touch and ready for repeat',
     MAIN_PAGE_ADVANTAGE_THIRD: 'Build up and enjoy your progress',
