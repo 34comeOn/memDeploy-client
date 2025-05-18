@@ -7,8 +7,10 @@ import { EditModalWindow } from './components/organizms/editModal';
 const App = () =>
 <>
     <Header />
-    <Outlet />
-    <EditModalWindow />
+    <div className='App--container__page'>
+        <Outlet />
+        <EditModalWindow />
+    </div>
 </>
 
 export default App;
