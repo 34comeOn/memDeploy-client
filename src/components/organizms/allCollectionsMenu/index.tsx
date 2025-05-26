@@ -5,7 +5,7 @@ import './style.scss';
 import { getAccountStatusSelector } from "../../../store/reducers/accountReducer";
 import { useAppSelector } from "../../../app/hooks";
 import { CreateNewCollectionButton } from "../../atoms/createNewCollectionButton";
-import { StyledMainPageMenu } from "../mainPageMenu/styledMainPageMenu";
+import { StyledMainPageMenu } from "../mainPageCollections/styledMainPageCollections";
 import { ROUT_PROTECTION_TEXT } from "../../../constants/stringConstants";
 
 export const AllCollectionsMenu = () => {

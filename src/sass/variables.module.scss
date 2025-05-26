@@ -1,6 +1,7 @@
 $ff-main-regular: "Montserrat", "Arial", sans-serif;
 
 $colorTransparent: transparent;
+$colorBackgroundWhite: #ffffff;
 $colorBackgroundLight: #DEE1FF;
 $colorBackgroundDark: #000000;
 $colorBackgroundRepeatList: #ffffff21;
@@ -26,6 +27,9 @@ $colorLowRepeatLevel: rgb(218 51 51);
 $colorMiddleRepeatLevel: rgb(165, 146, 48);
 $colorHighRepeatLevel: rgb(43, 131, 59);
 
+$colorContrast: #08ffff;
+$colorContrastBackground: #2f9696;
+
 // Viewports
 // ---------------------------------
 
@@ -46,6 +50,7 @@ $vp-1920:                           1920px;
 
 :export {
     colorTransparent: $colorTransparent;
+    colorBackgroundWhite: $colorBackgroundWhite;
     colorBackgroundLight: $colorBackgroundLight;
     colorBackgroundDark: $colorBackgroundDark;
     colorBackgroundRepeatList: $colorBackgroundRepeatList;

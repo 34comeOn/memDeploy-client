@@ -15,7 +15,7 @@ export const StyledHeader = styled.header`
     width: calc(100% - 40px);
     padding: 0 20px;
     background-color: rgba(0, 0, 0, 0.88);
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(2px);
     box-shadow: 0px 29px 24px -33px rgb(194 194 194 / 25%);
 
     @media ${device.laptop} { 
