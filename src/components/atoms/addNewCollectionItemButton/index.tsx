@@ -14,11 +14,11 @@ export const AddNewCollectionItemButton = () => {
     
     return(
         <Button 
-        className='add--new-card__button'
-        onClick={() => {
-            dispatch(setContentForModalWindow(MODAL_WINDOW_CONTENT_STRING_CONSTANTS.CREATE_NEW_CARD));
-            dispatch(showModalWindow());
-        }}
+            className='add--new-card__button'
+            onClick={() => {
+                dispatch(setContentForModalWindow(MODAL_WINDOW_CONTENT_STRING_CONSTANTS.CREATE_NEW_CARD));
+                dispatch(showModalWindow());
+            }}
         >
             <PlusSquareOutlined />
             {!isMobile && BUTTON_TITLE.NEW_CARD}

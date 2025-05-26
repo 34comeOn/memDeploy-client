@@ -25,6 +25,11 @@ body[class="ReactModal__Body--open"] {
   display: flex;
 }
 
+.App--container__page {
+  margin-top: 90px;
+  margin-bottom: 20px;
+}
+
 .App--button__getData:hover {
   background-color: $colorButtonHover;
 }
@@ -34,10 +39,10 @@ body[class="ReactModal__Body--open"] {
 }
 
 #root {
-  margin: 0 40px;
+  margin: 0 20px;
 
-  @include vp-1023 {
-    margin: 0 5px;
+  @include vp-599 {
+    margin: 0 10px;
   } 
 }
 

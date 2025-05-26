@@ -5,12 +5,12 @@ type TisVisible = {
   isVisible: boolean;
 }
 
-export const StyledAnswer = styled.pre<TisVisible>`
+export const StyledAnswer = styled.p<TisVisible>`
     width: -webkit-fill-available;
     height: 283px; 
     max-height: 283px; 
     overflow: scroll;
-    background-color: ${variables.colorBackgroundLight};
+    background-color: ${variables.colorBackgroundWhite};
     border-radius: 15px;
     padding: 15px;
     margin: 15px auto;

@@ -169,13 +169,12 @@ export const DELETE_CONFIRM = {
 }
 
 export const PAGE_CONTENT = {
-    MAIN_PAGE_TITLE: 'Welcome to Memorizer',
+    MAIN_PAGE_TITLE: 'App designed for data structuring, storing and intervallar reviewing',
     MAIN_PAGE_ADVANTAGE_FIRST: 'Make learning fun and attractive for your brain',
     MAIN_PAGE_ADVANTAGE_SECOND: 'Your data always in touch and ready for repeat',
     MAIN_PAGE_ADVANTAGE_THIRD: 'Build up and enjoy your progress',
     MAIN_PAGE_TRY: 'Try our stock collections to check',
     MAIN_PAGE_METHOD: 'OUR MEMORIZING METHOD',
-    MAIN_PAGE_ACCOUNT_FIRST: 'Or',
-    MAIN_PAGE_ACCOUNT_LINK: 'GET AN ACCOUNT',
-    MAIN_PAGE_ACCOUNT_SECOND: 'and create your own collections for free!',
+    MAIN_PAGE_ACCOUNT_LINK: 'GET AN ACCOUNT FOR FREE',
+    MAIN_PAGE_ACCOUNT_SECOND: 'To create your own collections',
 }
