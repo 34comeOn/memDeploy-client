@@ -1,7 +1,5 @@
 import React from "react";
-import { ChooseCollectionButton } from "../../atoms/chooseCollectionButton";
 import { StyledUserCollection } from "./styledUserCollection";
-import variables from '../../../sass/variables.module.scss';
 import './style.scss';
 import { checkAdminPowers, cutWords, getCurrentUserEmailFromLStorage } from "../../../utils/utils";
 import { DeleteCollectionButton } from "../../atoms/deleteCollectionButton";
@@ -10,6 +8,10 @@ import { CustomSpinner } from "../../atoms/customSpinner";
 import { useRequestLoading } from "../../../myHooks/useRequestLoading";
 import { useWarningNotification } from "../../../myHooks/utillsHooks/useWarningNotification";
 import { RESPONSE_ERROR_TITLE } from "../../../constants/stringConstants";
+import { useAppSelector } from "../../../app/hooks";
+import { useGetStockDataTriger } from "../../../myHooks/useGetStockDataTriger";
+import { useChooseCollectionButton } from "../../../myHooks/collectionHooks/useChooseCollectionButton";
+import { getAccountStatusSelector } from "../../../store/reducers/accountReducer";
 
 type TuserCollection = {
     title: string, 
@@ -27,14 +29,24 @@ export const UserCollection = ({title, color, adminList, _id}: TuserCollection) 
 
     const shortTitle = cutWords(title, 19);
 
+
+    const accountStatus = useAppSelector(getAccountStatusSelector);
+    const getDataFromLocalStorageByClick = useGetStockDataTriger(_id, onChangeLoadingStatus, openNotification as ((descriptionText: string) => void) );
+    const getDataByClick = useChooseCollectionButton(_id, onChangeLoadingStatus, openNotification as ((descriptionText: string) => void));
+
     return(
-        <StyledUserCollection color={color}>
+        <StyledUserCollection 
+            color={color}
+            onClick={accountStatus ? getDataByClick : getDataFromLocalStorageByClick}
+        >
             {userHasAdminPowersForCollection && <EditCollectionButton _id={_id} title={title} color={color} />}
-            {userHasAdminPowersForCollection && <DeleteCollectionButton 
-            onChangeLoadingStatus={onChangeLoadingStatus}
-            openNotification={openDeleteNotification as ((descriptionText: string) => void)
-            } 
-            _id={_id} />}
+            {userHasAdminPowersForCollection && (
+                <DeleteCollectionButton 
+                    onChangeLoadingStatus={onChangeLoadingStatus}
+                    openNotification={openDeleteNotification as ((descriptionText: string) => void)}
+                    _id={_id} 
+                />
+            )}
             <span className='collection--title'> 
                 {shortTitle}
             </span>
@@ -45,13 +57,6 @@ export const UserCollection = ({title, color, adminList, _id}: TuserCollection) 
             <>
                 {deleteContextHolder}
             </>
-            <ChooseCollectionButton 
-            color={variables.colorMenuBright} 
-            onChangeLoadingStatus={onChangeLoadingStatus} 
-            openNotification={openNotification as ((descriptionText: string) => void)}
-            _id={_id} >
-                Choose collection
-            </ChooseCollectionButton>
         </StyledUserCollection>
     )
 }
