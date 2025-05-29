@@ -11,10 +11,11 @@ export const EditCollectionButton = ({_id, color, title}: IeditCollection) => {
 
     return(
         <div className="edit-button--wraper__for-collection">
-            <StyledEditButton onClick={()=>{
-                dispatch(editCollection({_id, color, title}))
-                dispatch(setContentForModalWindow(MODAL_WINDOW_CONTENT_STRING_CONSTANTS.EDIT_COLLECTION))
-                dispatch(showModalWindow())
+            <StyledEditButton onClick={(e) => {
+                e.stopPropagation();
+                dispatch(editCollection({_id, color, title}));
+                dispatch(setContentForModalWindow(MODAL_WINDOW_CONTENT_STRING_CONSTANTS.EDIT_COLLECTION));
+                dispatch(showModalWindow());
             }} />
         </div>
     )

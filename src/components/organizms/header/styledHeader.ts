@@ -14,8 +14,8 @@ export const StyledHeader = styled.header`
     height: 115px;
     width: calc(100% - 40px);
     padding: 0 20px;
-    background-color: rgba(0, 0, 0, 0.88);
-    backdrop-filter: blur(2px);
+    background-color: rgba(50, 50, 50, 0.88);
+    backdrop-filter: blur(5px);
     box-shadow: 0px 29px 24px -33px rgb(194 194 194 / 25%);
 
     @media ${device.laptop} { 
