@@ -18,11 +18,11 @@ export const StyledUserCollection = styled.li<TcollectionColor>`
     flex-direction: column;
     justify-content: space-between;
     position: relative;
-    box-shadow: rgb(202 200 200) 2px 2px 4px 1px;
+    box-shadow: black 5px 5px 10px -4px;
     
     &:hover {
       cursor: pointer;
-      box-shadow: rgb(202 200 200) 2px 2px 4px 4px;
+      box-shadow: silver 3px 3px 6px -4px;
     }
 
     @media ${device.laptop} { 
