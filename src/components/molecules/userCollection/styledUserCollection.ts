@@ -7,22 +7,21 @@ type TcollectionColor = {
   }
 
 export const StyledUserCollection = styled.li<TcollectionColor>`
-    min-width: 300px;
-    height: 250px;
-    background-color: ${props => props.color? props.color: variables.colorMenuPurple};
-    margin: 15px;
-    border-radius: 15px;
-    padding-bottom: 7px;
-
+    position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    position: relative;
+    justify-content: flex-start;
+    min-width: 300px;
+    height: 250px;
+    margin: 15px;
+    padding-bottom: 7px;
+    border-radius: 25px;
+    background-color: ${props => props.color? props.color: variables.colorMenuPurple};
     box-shadow: black 5px 5px 10px -4px;
     
     &:hover {
       cursor: pointer;
-      box-shadow: silver 3px 3px 6px -4px;
+      outline: 2px solid silver;
     }
 
     @media ${device.laptop} { 
@@ -30,5 +29,6 @@ export const StyledUserCollection = styled.li<TcollectionColor>`
       width: 200px;
       height: 170px;
       margin: 8px;
+      border-radius: 15px;
     }
 `;

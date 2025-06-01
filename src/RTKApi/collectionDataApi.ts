@@ -57,7 +57,6 @@ export const collectionDataAPI = rootAPI.injectEndpoints({
       query(path) {
         return {
           url: `${path}`,
-          
         };
       }
     }),

@@ -12,7 +12,7 @@ import { getAccountStatusSelector } from "../../store/reducers/accountReducer";
 
 export const MainPage = () => {
     const isMobile = useMediaQuery({ query: `${device.mobile}`});
-    const isAuthorized = useAppSelector(getAccountStatusSelector);
+    const isUserAuthorized = useAppSelector(getAccountStatusSelector);
 
     return(
         <div className='main-page--container'>
@@ -49,7 +49,7 @@ export const MainPage = () => {
                 </Button>
             </div>
             <MainPageCollections />
-            {!isAuthorized && (
+            {!isUserAuthorized && (
                 <div className={`${'main-page--suggest__wrapper'}`}>
                     <span>
                         {PAGE_CONTENT.MAIN_PAGE_ACCOUNT_SECOND} 

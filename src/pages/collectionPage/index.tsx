@@ -9,7 +9,7 @@ import { getCurrentCollectionSelector } from "../../store/reducers/userCollectio
 import './style.scss';
 
 export const CollectionPage = () => {
-    const accountStatus = useAppSelector(getAccountStatusSelector);
+    const isUserAuthorised = useAppSelector(getAccountStatusSelector);
     const currentCollection = useAppSelector(getCurrentCollectionSelector);
     return(
         <div className="collection-page--container">
@@ -18,7 +18,7 @@ export const CollectionPage = () => {
             </h1>
             <div className='repeat-menu--button-wrapper '>
                 <GoBackButton />
-                {accountStatus && <AddNewCollectionItemButton />}
+                {isUserAuthorised && <AddNewCollectionItemButton />}
                 <BasicPopover />
             </div>
             <div className='collection-data--container'>
