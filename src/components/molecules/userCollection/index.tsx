@@ -36,7 +36,6 @@ export const UserCollection = (props: Props) => {
 
     const shortTitle = cutWords(title, 19);
 
-
     const accountStatus = useAppSelector(getAccountStatusSelector);
     const getDataFromLocalStorageByClick = useGetStockDataTriger(_id, onChangeLoadingStatus, openNotification as ((descriptionText: string) => void) );
     const getDataByClick = useChooseCollectionButton(

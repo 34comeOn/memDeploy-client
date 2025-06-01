@@ -5,31 +5,43 @@ import { collectionDataAPI } from "../RTKApi/collectionDataApi";
 import { hideCurrentCard, setTrainedCardId } from "../store/reducers/cardWindowReducer";
 import { UseChooseCollectionResponse } from "./collectionHooks/useResponses/useChooseCollectionResponse";
 
-export const useGetStockDataTriger = (collectionId: string, onChangeLoadingStatus: (value: boolean)=> void, openNotification: ((descriptionText: string) => void) ) => {
-    const dispatch = useAppDispatch();
-    const currentUserId = localStorage.getItem('stockDataUserId')?? '';
-    const [currentCollectionTriger] = collectionDataAPI.useGetCurrentCollectionToTrainMutation();
-    const navigate = useNavigate();
-    const accessToken = localStorage.getItem('accessToken') || '';
-    return () => {
-        dispatch(setTrainedCardId(''))
-        dispatch(hideCurrentCard());
-        onChangeLoadingStatus(true);
-        currentCollectionTriger({path: `api/choose-stock-collection/:${collectionId}/:${currentUserId}`,accessToken})
-        .unwrap()
-        .then(
-          (currentCollection) => {
-            onChangeLoadingStatus(false);
-            UseChooseCollectionResponse(currentCollection, dispatch);
-          },
-          () => {
-            onChangeLoadingStatus(false);
-            openNotification(RESPONSE_ERROR_TEXT.SOMETHING_WENT_WRONG);
-            throw new Error();
-          }
-        )
-        .then(
-          () => navigate('/collection')
-        )
-    }
+export const useGetStockDataTriger = (
+  collectionId: string,
+  onChangeLoadingStatus: (value: boolean)=> void,
+  openNotification: ((descriptionText: string) => void),
+) => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const [currentCollectionTriger] = collectionDataAPI.useGetCurrentCollectionToTrainMutation();
+
+  const currentUserId = localStorage.getItem('stockDataUserId')?? '';
+  const accessToken = localStorage.getItem('accessToken') || '';
+
+  return () => {
+    dispatch(setTrainedCardId(''))
+    dispatch(hideCurrentCard());
+
+    onChangeLoadingStatus(true);
+
+    currentCollectionTriger({
+      path: `api/choose-stock-collection/:${collectionId}/:${currentUserId}`,
+      accessToken,
+    })
+    .unwrap()
+    .then(
+      (currentCollection) => {
+        onChangeLoadingStatus(false);
+        UseChooseCollectionResponse(currentCollection, dispatch);
+      },
+      () => {
+        onChangeLoadingStatus(false);
+        openNotification(RESPONSE_ERROR_TEXT.SOMETHING_WENT_WRONG);
+        throw new Error();
+      }
+    )
+    .then(
+      () => navigate('/collection'),
+    );
+  }
 }
