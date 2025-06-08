@@ -14,14 +14,14 @@ export const StockCollectionsList = () => {
 
     useEffect(() => {
         const requestStockCollectionDataOnLoad = async () => {
-        try {
-            await requestStockCollectionData(GET_STOCK_COLLECTION_ENG_ENDPOINT).unwrap();
-        } catch (err) {
-            notification.error({
-                message: RESPONSE_ERROR_TEXT.SOMETHING_WENT_WRONG,
-                placement: 'top',
-            })
-        }
+            try {
+                await requestStockCollectionData(GET_STOCK_COLLECTION_ENG_ENDPOINT).unwrap();
+            } catch (err) {
+                notification.error({
+                    message: RESPONSE_ERROR_TEXT.SOMETHING_WENT_WRONG,
+                    placement: 'top',
+                })
+            }
         };
         requestStockCollectionDataOnLoad();
     }, [requestStockCollectionData]);

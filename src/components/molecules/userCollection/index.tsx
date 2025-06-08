@@ -12,6 +12,11 @@ import { useAppSelector } from "../../../app/hooks";
 import { useGetStockDataTriger } from "../../../myHooks/useGetStockDataTriger";
 import { useChooseCollectionButton } from "../../../myHooks/collectionHooks/useChooseCollectionButton";
 import { getAccountStatusSelector } from "../../../store/reducers/accountReducer";
+import { Button } from "antd";
+import { LinkOutlined } from "@ant-design/icons";
+import { useCreateShareLink } from "../../../myHooks/collectionHooks/useCreateShareLink";
+import { useMediaQuery } from "react-responsive";
+import { device } from "../../../global/theme";
 
 type Props = {
     title: string, 
@@ -28,6 +33,7 @@ export const UserCollection = (props: Props) => {
         _id,
     } = props;
 
+    const isLaptop = useMediaQuery({ query: `${device.isLaptop}`});
     const {isLoading, onChangeLoadingStatus} = useRequestLoading();
     const [notificationContextHolder, openNotification] = useWarningNotification(RESPONSE_ERROR_TITLE.CHOOSE_COLLECTION);
     const [deleteContextHolder, openDeleteNotification] = useWarningNotification(RESPONSE_ERROR_TITLE.DELETE);
@@ -37,12 +43,20 @@ export const UserCollection = (props: Props) => {
     const shortTitle = cutWords(title, 19);
 
     const accountStatus = useAppSelector(getAccountStatusSelector);
-    const getDataFromLocalStorageByClick = useGetStockDataTriger(_id, onChangeLoadingStatus, openNotification as ((descriptionText: string) => void) );
+
+    const getDataFromLocalStorageByClick = useGetStockDataTriger(
+        _id,
+        onChangeLoadingStatus,
+        openNotification as ((descriptionText: string) => void)
+    );
+    
     const getDataByClick = useChooseCollectionButton(
         _id,
         onChangeLoadingStatus,
         openNotification as ((descriptionText: string) => void),
     );
+
+    const onCreateShareLinkHandler = useCreateShareLink(_id, onChangeLoadingStatus, openNotification as ((descriptionText: string) => void));
 
     return(
         <StyledUserCollection 
@@ -50,13 +64,25 @@ export const UserCollection = (props: Props) => {
             onClick={accountStatus ? getDataByClick : getDataFromLocalStorageByClick}
         >
             <div className='collection--buttons__wrapper'>
-                {userHasAdminPowersForCollection && <EditCollectionButton _id={_id} title={title} color={color} />}
                 {userHasAdminPowersForCollection && (
-                    <DeleteCollectionButton 
-                        onChangeLoadingStatus={onChangeLoadingStatus}
-                        openNotification={openDeleteNotification as ((descriptionText: string) => void)}
-                        _id={_id} 
-                    />
+                    <>
+                        <Button
+                            className='share-link__button'
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                onCreateShareLinkHandler();
+                            }}
+                            size={isLaptop ? "middle" : "small"}
+                        >
+                            <LinkOutlined />
+                        </Button>
+                        <EditCollectionButton _id={_id} title={title} color={color} />
+                        <DeleteCollectionButton 
+                            onChangeLoadingStatus={onChangeLoadingStatus}
+                            openNotification={openDeleteNotification as ((descriptionText: string) => void)}
+                            _id={_id} 
+                        />
+                    </>
                 )}
             </div>
             <span className='collection--title'> 

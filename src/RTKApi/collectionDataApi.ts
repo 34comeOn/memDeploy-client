@@ -1,3 +1,4 @@
+import { TcreateShareLinkData } from '../myHooks/collectionHooks/useCreateShareLink';
 import { TeditCollectionData } from '../myHooks/collectionHooks/useEditCollection';
 import { TcollectionItemData, TeditCollectionItemData, Tuser, TuserCollectionData } from '../utils/utils';
 import { rootAPI } from './rootApi';
@@ -144,6 +145,16 @@ export const collectionDataAPI = rootAPI.injectEndpoints({
           method: 'PUT',
           headers: {'Content-Type': 'application/json;charset=utf-8'},
           body: JSON.stringify(args.editCollectionObj)
+        };
+      }
+    }),
+    putShareLink: build.mutation<string, {path: string, createShareLinkObj: TcreateShareLinkData}>({
+      query(args) {
+        return {
+          url: `${args.path}`,
+          method: 'PUT',
+          headers: {'Content-Type': 'application/json;charset=utf-8'},
+          body: JSON.stringify(args.createShareLinkObj)
         };
       }
     }),

@@ -30,13 +30,23 @@ const initialState: TinitialState = {
     currentCollection: getCurrentUserCollection(),
 }
 
-
 const userCollectionsSlice = createSlice({
     name: 'userCollectionsSlice',
     initialState,
     reducers: {
         setUserBasicCollectionsInfo(state, action: PayloadAction<TbasicCollectionInfo[]>) {
             localStorage.setItem(LOCAL_STORAGE_KEYS_CONSTANTS.USER_BASIC_COLLECTIONS_INFO, JSON.stringify(action.payload))
+            state.basicUserCollectionsInfo = getBasicUserCollectionsInfo();
+        },
+        addShareLinkForBasicCollectionsInfo(state, action: PayloadAction<{currentCollectionId: string, collectionShareLink: string}>) {
+            const prevBasicCollectionsInfo = getBasicUserCollectionsInfo();
+            const apdatedBasicCollectionsInfo = prevBasicCollectionsInfo.map((collectionInfo: TbasicCollectionInfo) => {
+                if (collectionInfo._id === action.payload.currentCollectionId) {
+                    collectionInfo.collectionShareLink = action.payload.collectionShareLink;
+                }
+                return collectionInfo;
+            })
+            localStorage.setItem(LOCAL_STORAGE_KEYS_CONSTANTS.USER_BASIC_COLLECTIONS_INFO, JSON.stringify(apdatedBasicCollectionsInfo))
             state.basicUserCollectionsInfo = getBasicUserCollectionsInfo();
         },
         removeUserBasicCollectionsInfo(state) {
@@ -66,6 +76,7 @@ export const {
     setAllUserCollections, 
     setCurrentCollection,
     removeAllUserCollections,
+    addShareLinkForBasicCollectionsInfo,
 } = userCollectionsSlice.actions;
 
 export const getBasicUserCollectionsInfoSelector = (state: {userCollectionsSlice: {basicUserCollectionsInfo: TbasicCollectionInfo[]}}) =>

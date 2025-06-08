@@ -6,6 +6,7 @@ export const LOG_IN_USER_ENDPOINT = 'api/log-in';
 export const REGISTER_USER_ENDPOINT = 'api/register';
 export const CREATE_NEW_COLLECTION_ENDPOINT = 'api/new-collection';
 export const EDIT_COLLECTION_ENDPOINT = 'api/edit-collection';
+export const CREATE_SHARE_LINK = 'api/create-share-link';
 export const CREATE_NEW_CARD_ENDPOINT = 'api/new-card';
 export const EDIT_CARD_ENDPOINT = 'api/edit-card';
 export const PUT_REPEATED_COLLECTION_ITEM_ENDPOINT = 'api/repeat';

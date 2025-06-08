@@ -3,7 +3,6 @@
 
 .collection--buttons__wrapper {
     display: flex;
-    width: 100px;
     height: 30px;
     margin: 8px 20px 0 auto;
     gap: 8px;
@@ -11,6 +10,14 @@
     @include vp-1023 {
         width: min-content;
         margin-right: 16px;
+    } 
+}
+
+.share-link__button {
+    margin-right: 88px;
+
+    @include vp-1023 {
+        margin-right: 60px;
     } 
 }
 

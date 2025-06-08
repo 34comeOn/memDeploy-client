@@ -17,6 +17,7 @@ export type TbasicCollectionInfo = {
     collectionImage?: string,
     collectionTitle: string,
     collectionAdminList: string[],
+    collectionShareLink?: string,
 }
 
 export type TcollectionItemComment = {
@@ -75,6 +76,7 @@ export type TuserCollectionData = {
     collectionСategories?: TcollectionСategory[],
     collectionTags?: TcollectionTag[],
     collectionData: TcollectionItemData[],
+    collectionShareLink?: string,
 }
 
 export type Tuser = {
@@ -319,13 +321,13 @@ export const makeOverlayProgress = (currentCollectionId: string, currentCardId: 
 
 
 export const cutWords = (title: string, maxLength: number ) => {
-    const cuttedWordsTitle = title.split(' ').map((word: string) => {
+    const cuttedWordsTitle = title?.split(' ').map((word: string) => {
         if (word.length > maxLength) {
-            return `${word.slice(0, maxLength)}...`
+            return `${word.slice(0, maxLength)}...`;
         }
 
-        return word
+        return word;
     });
 
-    return cuttedWordsTitle.join(' ')
+    return cuttedWordsTitle?.join(' ');
 }
