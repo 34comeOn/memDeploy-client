@@ -32,7 +32,7 @@ export const useCreateShareLink = (
         .then(
           (savedShareLink) => {
             onChangeLoadingStatus(false)
-            dispatch(addShareLinkForBasicCollectionsInfo({currentCollectionId: _id, collectionShareLink: savedShareLink}))
+            dispatch(addShareLinkForBasicCollectionsInfo({currentCollectionId: _id, collectionShareLink: savedShareLink[0]}))
             dispatch(hideModalWindow());
           },
           () => {

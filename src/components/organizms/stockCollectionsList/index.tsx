@@ -40,6 +40,7 @@ export const StockCollectionsList = () => {
                         title={item.collectionTitle}
                         color={item.collectionColor || STOCK_COLLECTION_COLOR}
                         adminList={item.collectionAdminList}
+                        shareLink={item.collectionShareLink || ''}
                     />
                 )}
             </ StyledUserCollectionsList >

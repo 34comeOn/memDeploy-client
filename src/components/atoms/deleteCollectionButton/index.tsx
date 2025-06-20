@@ -38,6 +38,3 @@ export const DeleteCollectionButton = ({_id, onChangeLoadingStatus, openNotifica
         </Popconfirm>
     )
 }
-
-
-

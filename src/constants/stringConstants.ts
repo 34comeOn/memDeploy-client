@@ -71,6 +71,7 @@ export const RESPONSE_ERROR_TITLE = {
     LOGOUT: 'Logout failed',
     LOG_IN: 'Login failed',
     REGISTRATION: 'Registration failed',
+    CREATE_SHARE_LINK: 'The link was not created',
 }
 
 export const ACTIVATION_REQUEST = {
