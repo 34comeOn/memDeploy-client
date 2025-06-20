@@ -1,4 +1,5 @@
 import { TcreateShareLinkData } from '../myHooks/collectionHooks/useCreateShareLink';
+import { TdeleteShareLinkData } from '../myHooks/collectionHooks/useDeleteShareLink';
 import { TeditCollectionData } from '../myHooks/collectionHooks/useEditCollection';
 import { TcollectionItemData, TeditCollectionItemData, Tuser, TuserCollectionData } from '../utils/utils';
 import { rootAPI } from './rootApi';
@@ -125,6 +126,16 @@ export const collectionDataAPI = rootAPI.injectEndpoints({
         return {
           url: `${path}`,
           method: 'DELETE',
+        };
+      }
+    }),
+    deleteShareLink: build.mutation<string, {path: string, deleteShareLinkObj: TdeleteShareLinkData}>({
+      query(args) {
+        return {
+          url: `${args.path}`,
+          method: 'DELETE',
+          headers: {'Content-Type': 'application/json;charset=utf-8'},
+          body: JSON.stringify(args.deleteShareLinkObj)
         };
       }
     }),

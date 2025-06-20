@@ -15,6 +15,7 @@ import { getAccountStatusSelector } from "../../../store/reducers/accountReducer
 import { Button, Modal } from "antd";
 import { useCreateShareLink } from "../../../myHooks/collectionHooks/useCreateShareLink";
 import { ShareLinkCollectionButton } from "../../atoms/shareLinkCollectionButton";
+import { useDeleteShareLink } from "../../../myHooks/collectionHooks/useDeleteShareLink";
 
 type Props = {
     title: string, 
@@ -42,12 +43,14 @@ export const UserCollection = (props: Props) => {
     useEffect(() => {
         if (!isLoading) {
             setConfirmLoadingLinkCreation(false);
+            setConfirmLoadingLinkDeletion(false);
         }
     },[isLoading]);
 
     const [notificationContextHolder, openNotification] = useWarningNotification(RESPONSE_ERROR_TITLE.CHOOSE_COLLECTION);
     const [deleteContextHolder, openDeleteNotification] = useWarningNotification(RESPONSE_ERROR_TITLE.DELETE);
     const [createShareLinkContextHolder, openCreateShareLinkNotification] = useWarningNotification(RESPONSE_ERROR_TITLE.CREATE_SHARE_LINK);
+    const [deleteShareLinkContextHolder, openDeleteShareLinkNotification] = useWarningNotification(RESPONSE_ERROR_TITLE.DELETE_SHARE_LINK);
 
     const currentUserEmailFromLStorage = getCurrentUserEmailFromLStorage();
     const userHasAdminPowersForCollection = checkAdminPowers(currentUserEmailFromLStorage?? '', adminList?? []);
@@ -73,8 +76,14 @@ export const UserCollection = (props: Props) => {
         openCreateShareLinkNotification as ((descriptionText: string) => void),
     );
 
-    const isLoadingLinkCreation = isLoading;
+    const onDeleteShareLinkHandler = useDeleteShareLink(
+        _id,
+        onChangeLoadingStatus,
+        openDeleteShareLinkNotification as ((descriptionText: string) => void),
+    );
+
     const [confirmLoadingLinkCreation, setConfirmLoadingLinkCreation] = useState(false);
+    const [confirmLoadingLinkDeletion, setConfirmLoadingLinkDeletion] = useState(false);
     const [showCopiedSuccessfully, setShowCopiedSuccessfully] = useState(false);
 
     const showModal = () => {
@@ -87,8 +96,10 @@ export const UserCollection = (props: Props) => {
         e.preventDefault();
     };
   
-    const handleDelete = () => {
-        setOpenModal(false);
+    const handleDelete = (e: React.MouseEvent<HTMLElement>) => {
+        setConfirmLoadingLinkDeletion(true);
+        onDeleteShareLinkHandler();
+        e.preventDefault();
     };
 
     const handleCopyShareLink = async () => {
@@ -141,7 +152,7 @@ export const UserCollection = (props: Props) => {
             <Modal
                 open={openModal}
                 title="Share your collection"
-                confirmLoading={confirmLoadingLinkCreation}
+                confirmLoading={confirmLoadingLinkCreation || confirmLoadingLinkDeletion}
                 onCancel={handleCancel}
                 footer={[
                     <Button
@@ -166,7 +177,8 @@ export const UserCollection = (props: Props) => {
                         key="submit"
                         type="primary"
                         onClick={handleCreate}
-                        loading={isLoadingLinkCreation}
+                        disabled={shareLink.length !== 0}
+                        loading={confirmLoadingLinkCreation}
                     >
                         Generate link
                     </Button>
@@ -183,6 +195,7 @@ export const UserCollection = (props: Props) => {
                         key="delete"
                         type="primary"
                         onClick={handleDelete}
+                        loading={confirmLoadingLinkDeletion}
                         disabled={shareLink.length === 0}
                     >
                         Stop sharing
@@ -191,6 +204,9 @@ export const UserCollection = (props: Props) => {
             </Modal>
             <>
                 {createShareLinkContextHolder}
+            </>
+            <>
+                {deleteShareLinkContextHolder}
             </>
         </>
     )

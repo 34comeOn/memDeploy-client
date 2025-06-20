@@ -7,6 +7,7 @@ export const REGISTER_USER_ENDPOINT = 'api/register';
 export const CREATE_NEW_COLLECTION_ENDPOINT = 'api/new-collection';
 export const EDIT_COLLECTION_ENDPOINT = 'api/edit-collection';
 export const CREATE_SHARE_LINK = 'api/create-share-link';
+export const DELETE_SHARE_LINK = 'api/delete-share-link';
 export const CREATE_NEW_CARD_ENDPOINT = 'api/new-card';
 export const EDIT_CARD_ENDPOINT = 'api/edit-card';
 export const PUT_REPEATED_COLLECTION_ITEM_ENDPOINT = 'api/repeat';
@@ -72,6 +73,7 @@ export const RESPONSE_ERROR_TITLE = {
     LOG_IN: 'Login failed',
     REGISTRATION: 'Registration failed',
     CREATE_SHARE_LINK: 'The link was not created',
+    DELETE_SHARE_LINK: 'Stop sharing collection was not applied, please contact our support team: memorizer.app.data@gmail.com',
 }
 
 export const ACTIVATION_REQUEST = {

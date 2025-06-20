@@ -1,37 +1,37 @@
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { CREATE_SHARE_LINK, RESPONSE_ERROR_TEXT } from "../../constants/stringConstants";
+import { DELETE_SHARE_LINK, RESPONSE_ERROR_TEXT } from "../../constants/stringConstants";
 import { collectionDataAPI } from "../../RTKApi/collectionDataApi";
 import { getUserIdSelector } from "../../store/reducers/accountReducer";
 import { hideModalWindow } from "../../store/reducers/modalWindowReducer";
-import { addShareLinkForBasicCollectionsInfo } from "../../store/reducers/userCollectionsReducer";
+import { removeShareLinkForBasicCollectionsInfo } from "../../store/reducers/userCollectionsReducer";
 
-export type TcreateShareLinkData = {
+export type TdeleteShareLinkData = {
     userId: string,
     collectionId: string,
   }
-export const useCreateShareLink = (
+export const useDeleteShareLink = (
     _id: string,
     onChangeLoadingStatus: (value: boolean)=> void,
     openNotification: ((descriptionText: string) => void),
 ) => {
     const dispatch = useAppDispatch();
-    const [getAllCollectionsAfterEditingCollectionTriger] = collectionDataAPI.usePutShareLinkMutation();
+    const [getAllCollectionsAfterEditingCollectionTriger] = collectionDataAPI.useDeleteShareLinkMutation();
     const currentUserId = useAppSelector(getUserIdSelector);
     
     return () => {
 
-        const createShareLinkObj: TcreateShareLinkData = {
+        const deleteShareLinkObj: TdeleteShareLinkData = {
             userId: currentUserId,
             collectionId: _id,
         }
 
         onChangeLoadingStatus(true)
-        getAllCollectionsAfterEditingCollectionTriger({path: CREATE_SHARE_LINK, createShareLinkObj})
+        getAllCollectionsAfterEditingCollectionTriger({path: DELETE_SHARE_LINK, deleteShareLinkObj})
         .unwrap()
         .then(
-          (savedShareLink) => {
+          (result) => {
             onChangeLoadingStatus(false)
-            dispatch(addShareLinkForBasicCollectionsInfo({currentCollectionId: _id, collectionShareLink: savedShareLink[0]}))
+            dispatch(removeShareLinkForBasicCollectionsInfo({currentCollectionId: _id}))
             dispatch(hideModalWindow());
           },
           () => {
