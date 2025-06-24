@@ -8,7 +8,7 @@ import { CustomSpinner } from "../../atoms/customSpinner";
 import { useRequestLoading } from "../../../myHooks/useRequestLoading";
 import { useWarningNotification } from "../../../myHooks/utillsHooks/useWarningNotification";
 import { RESPONSE_ERROR_TITLE } from "../../../constants/stringConstants";
-import { useAppSelector } from "../../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { useGetStockDataTriger } from "../../../myHooks/useGetStockDataTriger";
 import { useChooseCollectionButton } from "../../../myHooks/collectionHooks/useChooseCollectionButton";
 import { getAccountStatusSelector } from "../../../store/reducers/accountReducer";
@@ -16,6 +16,7 @@ import { Button, Modal } from "antd";
 import { useCreateShareLink } from "../../../myHooks/collectionHooks/useCreateShareLink";
 import { ShareLinkCollectionButton } from "../../atoms/shareLinkCollectionButton";
 import { useDeleteShareLink } from "../../../myHooks/collectionHooks/useDeleteShareLink";
+import { setCurrentCollectionShared, setCurrentCollectionStock } from "../../../store/reducers/userCollectionsReducer";
 
 type Props = {
     title: string, 
@@ -23,6 +24,8 @@ type Props = {
     adminList: string[], 
     _id: string,
     shareLink: string,
+    isSharedCollection: boolean,
+    isStockCollection: boolean,
 }
 
 export const UserCollection = (props: Props) => {
@@ -32,6 +35,8 @@ export const UserCollection = (props: Props) => {
         adminList,
         _id,
         shareLink,
+        isSharedCollection,
+        isStockCollection,
     } = props;
 
     const shortTitle = cutWords(title, 19);
@@ -103,7 +108,7 @@ export const UserCollection = (props: Props) => {
     };
 
     const handleCopyShareLink = async () => {
-        const result = await copyToClipboard(`https://memorizer-app.com/apply-collection-share-link/:${shareLink}`);
+        const result = await copyToClipboard(`https://memorizer-app.com/apply_collection_share_link/${shareLink}`);
         if (result) {
             setShowCopiedSuccessfully(true);
             setTimeout(() => {
@@ -118,14 +123,34 @@ export const UserCollection = (props: Props) => {
         setOpenModal(false);
     };
 
+    const dispatch = useAppDispatch();
+
     return(
         <>
             <StyledUserCollection 
                 color={color}
-                onClick={accountStatus ? getDataByClick : getDataFromLocalStorageByClick}
+                onClick={() => {
+                    // if (accountStatus && !(isStockCollection || isSharedCollection)) {
+                    if (isStockCollection || isSharedCollection) {
+                        console.log('getDataFromLocalStorageByClick')
+                        getDataFromLocalStorageByClick();
+                    } else {
+                        console.log('getDataByClick')
+                        getDataByClick();
+                    }
+
+                    if (isStockCollection) {
+                        dispatch(setCurrentCollectionStock(true));
+                    } else if (isSharedCollection) {
+                        dispatch(setCurrentCollectionShared(true));
+                    } else {
+                        dispatch(setCurrentCollectionStock(false));
+                        dispatch(setCurrentCollectionShared(false));
+                    }
+                }}
             >
                 <div className='collection--buttons__wrapper'>
-                    {userHasAdminPowersForCollection && (
+                    {userHasAdminPowersForCollection && !isSharedCollection && (
                         <>
                             <ShareLinkCollectionButton showModal={showModal}/>
                             <EditCollectionButton _id={_id} title={title} color={color} />

@@ -9,8 +9,9 @@ import { Link } from "react-router-dom";
 import { Button } from "antd";
 import { useAppSelector } from "../../app/hooks";
 import { getAccountStatusSelector } from "../../store/reducers/accountReducer";
+import { JsxChild } from "typescript";
 
-export const MainPage = () => {
+export const MainPage = ({children}: {children?: React.ReactNode}) => {
     const isMobile = useMediaQuery({ query: `${device.mobile}`});
     const isUserAuthorized = useAppSelector(getAccountStatusSelector);
 
@@ -40,6 +41,7 @@ export const MainPage = () => {
                     </span>
                 </div>
             </div>
+            {children}
             <div className="main-page--suggest__wrapper">
                 <span>
                     {PAGE_CONTENT.MAIN_PAGE_TRY}

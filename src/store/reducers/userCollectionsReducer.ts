@@ -7,6 +7,8 @@ type TinitialState = {
     basicUserCollectionsInfo: TbasicCollectionInfo[],
     allUserCollections: TuserCollectionData[],
     currentCollection: TuserCollectionData,
+    isCurrentCollectionStock: boolean,
+    isCurrentCollectionShared: boolean,
 }
 
 const getBasicUserCollectionsInfo = () => {
@@ -24,10 +26,16 @@ const getCurrentUserCollection = () => {
     return storageCurrentCollection;
 };
 
+const getIsCollectionStock = () => JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS_CONSTANTS.CURRENT_COLLECTION_STOCK)?? 'false');
+
+const getIsCollectionShared = () => JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS_CONSTANTS.CURRENT_COLLECTION_SHARED)?? 'false');;
+
 const initialState: TinitialState = {
     basicUserCollectionsInfo: getBasicUserCollectionsInfo(),
     allUserCollections: getUserCollections(),
     currentCollection: getCurrentUserCollection(),
+    isCurrentCollectionStock: getIsCollectionStock(),
+    isCurrentCollectionShared: getIsCollectionShared(),
 }
 
 const userCollectionsSlice = createSlice({
@@ -76,6 +84,14 @@ const userCollectionsSlice = createSlice({
             localStorage.setItem(LOCAL_STORAGE_KEYS_CONSTANTS.CURRENT_USER_COLLECTION, JSON.stringify(action.payload))
             state.currentCollection = getCurrentUserCollection();
         },
+        setCurrentCollectionStock(state, action: PayloadAction<boolean>) {
+            localStorage.setItem(LOCAL_STORAGE_KEYS_CONSTANTS.CURRENT_COLLECTION_STOCK, JSON.stringify(action.payload))
+            state.isCurrentCollectionStock = getIsCollectionStock();
+        },
+        setCurrentCollectionShared(state, action: PayloadAction<boolean>) {
+            localStorage.setItem(LOCAL_STORAGE_KEYS_CONSTANTS.CURRENT_COLLECTION_SHARED, JSON.stringify(action.payload))
+            state.isCurrentCollectionShared = getIsCollectionShared();
+        },
     }
 })
 
@@ -89,6 +105,8 @@ export const {
     removeAllUserCollections,
     addShareLinkForBasicCollectionsInfo,
     removeShareLinkForBasicCollectionsInfo,
+    setCurrentCollectionStock,
+    setCurrentCollectionShared,
 } = userCollectionsSlice.actions;
 
 export const getBasicUserCollectionsInfoSelector = (state: {userCollectionsSlice: {basicUserCollectionsInfo: TbasicCollectionInfo[]}}) =>
@@ -98,4 +116,10 @@ export const getAllUserCollectionsSelector = (state: {userCollectionsSlice: {all
    state.userCollectionsSlice.allUserCollections;
 
 export const getCurrentCollectionSelector = (state: {userCollectionsSlice: {currentCollection: TuserCollectionData}}) =>
-   state.userCollectionsSlice.currentCollection
+   state.userCollectionsSlice.currentCollection;
+
+export const getIsCurrentCollectionStock = (state: {userCollectionsSlice: {isCurrentCollectionStock: boolean}}) =>
+   state.userCollectionsSlice.isCurrentCollectionStock;
+
+export const getIsCurrentCollectionShared = (state: {userCollectionsSlice: {isCurrentCollectionShared: boolean}}) =>
+   state.userCollectionsSlice.isCurrentCollectionShared;

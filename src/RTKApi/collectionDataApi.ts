@@ -1,3 +1,4 @@
+import { TapplySharedCollectionObj } from '../components/organizms/currentlyApplyingCollection';
 import { TcreateShareLinkData } from '../myHooks/collectionHooks/useCreateShareLink';
 import { TdeleteShareLinkData } from '../myHooks/collectionHooks/useDeleteShareLink';
 import { TeditCollectionData } from '../myHooks/collectionHooks/useEditCollection';
@@ -62,6 +63,14 @@ export const collectionDataAPI = rootAPI.injectEndpoints({
         };
       }
     }),
+    getApplySharedCollectionData: build.mutation<TuserCollectionData, {path: string}>({
+      query(path) {
+        console.log('args.path',path)
+        return {
+          url: `${path.path}`,
+        };
+      }
+    }),
     logInUser: build.mutation<Tuser, {path: string, logInObject: TlogInObject}>({
       query(args) {
         return {
@@ -91,7 +100,7 @@ export const collectionDataAPI = rootAPI.injectEndpoints({
         };
       }
     }),
-    getCurrentCollectionToTrain: build.mutation<TuserCollectionData, {path:string, accessToken: string}>({
+    getCurrentCollectionToTrain: build.mutation<TuserCollectionData, {path: string, accessToken: string}>({
       query(args) {
         return {
           url: `${args.path}`,

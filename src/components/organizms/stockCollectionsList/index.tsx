@@ -25,7 +25,7 @@ export const StockCollectionsList = () => {
         };
         requestStockCollectionDataOnLoad();
     }, [requestStockCollectionData]);
-
+console.log('allStockCollections',allStockCollections)
     if (isLoading) {
         return  <CustomSpinner isLoading={isLoading} />
     }
@@ -41,6 +41,8 @@ export const StockCollectionsList = () => {
                         color={item.collectionColor || STOCK_COLLECTION_COLOR}
                         adminList={item.collectionAdminList}
                         shareLink={item.collectionShareLink || ''}
+                        isSharedCollection={false}
+                        isStockCollection={true}
                     />
                 )}
             </ StyledUserCollectionsList >

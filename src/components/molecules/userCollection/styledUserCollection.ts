@@ -11,7 +11,7 @@ export const StyledUserCollection = styled.li<TcollectionColor>`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    min-width: 300px;
+    width: 300px;
     height: 250px;
     margin: 15px;
     padding-bottom: 7px;
@@ -25,7 +25,6 @@ export const StyledUserCollection = styled.li<TcollectionColor>`
     }
 
     @media ${device.laptop} { 
-      min-width: 200px;
       width: 200px;
       height: 170px;
       margin: 8px;

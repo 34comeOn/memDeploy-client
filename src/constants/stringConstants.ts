@@ -6,6 +6,7 @@ export const LOG_IN_USER_ENDPOINT = 'api/log-in';
 export const REGISTER_USER_ENDPOINT = 'api/register';
 export const CREATE_NEW_COLLECTION_ENDPOINT = 'api/new-collection';
 export const EDIT_COLLECTION_ENDPOINT = 'api/edit-collection';
+export const APPLY_SHARED_COLLECTION = 'api/apply-collection-share-link';
 export const CREATE_SHARE_LINK = 'api/create-share-link';
 export const DELETE_SHARE_LINK = 'api/delete-share-link';
 export const CREATE_NEW_CARD_ENDPOINT = 'api/new-card';
@@ -24,6 +25,8 @@ export const LOCAL_STORAGE_KEYS_CONSTANTS = {
     USER_REPEAT_GROUPS: 'userRepeatGroups',
     USER_BASIC_COLLECTIONS_INFO: 'userBasicCollectionsInfo',
     FILTERS_LIST: 'filtersList',
+    CURRENT_COLLECTION_STOCK: 'isCurrentCollectionStock',
+    CURRENT_COLLECTION_SHARED: 'isCurrentCollectionShared',
 }
 
 export const MODAL_WINDOW_CONTENT_STRING_CONSTANTS = {
@@ -116,6 +119,7 @@ export const RESPONSE_ERROR_TEXT = {
     EMAIL_ALREADY_EXIST: 'User with such e-mail already registred',
     ACCOUNT_NOT_ACTIVATED: 'Please verify your e-mail. Account not activated.',
     STOCK_COLLECTION_HAS_NOT_LOADED: 'Stock collection hasn`t loaded',
+    SHARED_COLLECTION_HAS_NOT_LOADED: 'Shared collection hasn`t loaded',
     AUTHORIZATION_FAILED: 'Authorization went wrong',
 }
 
@@ -132,6 +136,7 @@ export const ROUTS_CONSTANTS = {
     PROFILE_PAGE: 'profile',
     SETTINGS_PAGE: 'settings',
     SUPPORT_PAGE: 'support',
+    APPLY_SHARE_LINK_PAGE: 'apply_collection_share_link',
 }
 
 export const NAVIGATION_ITEMS_PATH = {

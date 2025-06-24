@@ -19,6 +19,8 @@ export const UserCollectionsList = () => {
                     color={item.collectionColor || STOCK_COLLECTION_COLOR}
                     adminList={item.collectionAdminList}
                     shareLink={item.collectionShareLink || ''}
+                    isSharedCollection={false}
+                    isStockCollection={false}
                 ></UserCollection>
             )}
         </ StyledUserCollectionsList >
