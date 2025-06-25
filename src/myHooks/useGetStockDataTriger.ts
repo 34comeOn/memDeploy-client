@@ -17,7 +17,7 @@ export const useGetStockDataTriger = (
 
   const currentUserId = localStorage.getItem('stockDataUserId')?? '';
   const accessToken = localStorage.getItem('accessToken') || '';
-console.log('currentUserId',currentUserId)
+
   return () => {
     dispatch(setTrainedCardId(''))
     dispatch(hideCurrentCard());

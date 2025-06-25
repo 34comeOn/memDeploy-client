@@ -25,7 +25,7 @@ export const StockCollectionsList = () => {
         };
         requestStockCollectionDataOnLoad();
     }, [requestStockCollectionData]);
-console.log('allStockCollections',allStockCollections)
+
     if (isLoading) {
         return  <CustomSpinner isLoading={isLoading} />
     }

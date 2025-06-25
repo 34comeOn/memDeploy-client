@@ -194,6 +194,7 @@ export const cutBasicUserCollectionsInfo = (allUserCollections: TuserCollectionD
             collectionImage: collection.collectionColor,
             collectionTitle: collection.collectionTitle,
             collectionAdminList: collection.collectionAdminList,
+            collectionShareLink: collection.collectionShareLink,
         })
     });
 
