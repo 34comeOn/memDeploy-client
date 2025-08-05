@@ -16,7 +16,6 @@ export const RepeatContainer = () => {
   
   const currentCollection = useAppSelector(getCurrentCollectionSelector);
   const { orgonizedGroupsOfCollection } = spreadCollectionData(addOverlay(currentCollection).collectionData);
-    
   // @ts-ignore
   const {forceState} = useForceRender();
 

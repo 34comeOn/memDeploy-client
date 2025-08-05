@@ -12,8 +12,8 @@ type TinitialState = {
 }
 
 const getBasicUserCollectionsInfo = () => {
-    const storageUserBasicCollectionsInfo = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS_CONSTANTS.USER_BASIC_COLLECTIONS_INFO)?? JSON.stringify([STOCK_BASIC_COLLECTION_INFO]));
-    return storageUserBasicCollectionsInfo;
+    const storageUserBasicCollectionsInfo = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEYS_CONSTANTS.USER_BASIC_COLLECTIONS_INFO)?? JSON.stringify([]));
+    return storageUserBasicCollectionsInfo as TbasicCollectionInfo[];
 };
 
 const getUserCollections = () => {
@@ -43,7 +43,18 @@ const userCollectionsSlice = createSlice({
     initialState,
     reducers: {
         setUserBasicCollectionsInfo(state, action: PayloadAction<TbasicCollectionInfo[]>) {
-            localStorage.setItem(LOCAL_STORAGE_KEYS_CONSTANTS.USER_BASIC_COLLECTIONS_INFO, JSON.stringify(action.payload))
+            const prevBasicCollectionsInfo = getBasicUserCollectionsInfo();
+            const prevCollectionsIds = prevBasicCollectionsInfo.map(collection => collection._id);
+
+            for (let newCollection of action.payload) {
+                if (prevCollectionsIds.includes(newCollection._id)) {
+                    const index = prevBasicCollectionsInfo.findIndex(collection => collection._id === newCollection._id);
+                    prevBasicCollectionsInfo[index] = newCollection;
+                } else {
+                    prevBasicCollectionsInfo.push(newCollection);
+                }
+            }
+            localStorage.setItem(LOCAL_STORAGE_KEYS_CONSTANTS.USER_BASIC_COLLECTIONS_INFO, JSON.stringify(prevBasicCollectionsInfo));
             state.basicUserCollectionsInfo = getBasicUserCollectionsInfo();
         },
         addShareLinkForBasicCollectionsInfo(state, action: PayloadAction<{currentCollectionId: string, collectionShareLink: string}>) {

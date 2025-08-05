@@ -11,12 +11,13 @@ import { RESPONSE_ERROR_TITLE } from "../../../constants/stringConstants";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { useGetStockDataTriger } from "../../../myHooks/useGetStockDataTriger";
 import { useChooseCollectionButton } from "../../../myHooks/collectionHooks/useChooseCollectionButton";
-import { getAccountStatusSelector } from "../../../store/reducers/accountReducer";
+import { getAccountStatusSelector, getUserIdSelector } from "../../../store/reducers/accountReducer";
 import { Button, Modal } from "antd";
 import { useCreateShareLink } from "../../../myHooks/collectionHooks/useCreateShareLink";
 import { ShareLinkCollectionButton } from "../../atoms/shareLinkCollectionButton";
 import { useDeleteShareLink } from "../../../myHooks/collectionHooks/useDeleteShareLink";
 import { setCurrentCollectionShared, setCurrentCollectionStock } from "../../../store/reducers/userCollectionsReducer";
+import { useGetSharedDataTriger } from "../../../myHooks/useGetSharedDataTriger";
 
 type Props = {
     title: string, 
@@ -61,7 +62,7 @@ export const UserCollection = (props: Props) => {
     const userHasAdminPowersForCollection = checkAdminPowers(currentUserEmailFromLStorage?? '', adminList?? []);
 
 
-    const accountStatus = useAppSelector(getAccountStatusSelector);
+    const isUserAuthorized = useAppSelector(getAccountStatusSelector);
 
     const getDataFromLocalStorageByClick = useGetStockDataTriger(
         _id,
@@ -73,6 +74,20 @@ export const UserCollection = (props: Props) => {
         _id,
         onChangeLoadingStatus,
         openNotification as ((descriptionText: string) => void),
+    );
+
+    const getSharedDataWithLocalStorageProgressByClick = useGetSharedDataTriger(
+        shareLink,
+        onChangeLoadingStatus,
+        openNotification as ((descriptionText: string) => void),
+    );
+
+    const currentUserId = useAppSelector(getUserIdSelector);
+    const getSharedDataWithDbProgressByClick = useGetSharedDataTriger(
+        shareLink,
+        onChangeLoadingStatus,
+        openNotification as ((descriptionText: string) => void),
+        currentUserId,
     );
 
     const onCreateShareLinkHandler = useCreateShareLink(
@@ -130,12 +145,15 @@ export const UserCollection = (props: Props) => {
             <StyledUserCollection 
                 color={color}
                 onClick={() => {
-                    // if (accountStatus && !(isStockCollection || isSharedCollection)) {
-                    if (isStockCollection || isSharedCollection) {
-                        console.log('getDataFromLocalStorageByClick')
+                    if (isStockCollection) {
                         getDataFromLocalStorageByClick();
+                    } else if (isSharedCollection) {
+                        if (isUserAuthorized) {
+                            getSharedDataWithDbProgressByClick();
+                        } else {
+                            getSharedDataWithLocalStorageProgressByClick();
+                        }
                     } else {
-                        console.log('getDataByClick')
                         getDataByClick();
                     }
 

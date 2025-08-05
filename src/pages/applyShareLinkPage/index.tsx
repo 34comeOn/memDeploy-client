@@ -34,11 +34,14 @@ export const ApplyShareLinkPage = () => {
                             Sorry, the share link is invalid, and collection could not be downloaded and attached!
                         </div>
                     ) : (
-                        <CurrentlyApplyingCollection
-                            validUserId={validUserId}
-                            validCollectionId={validCollectionId}
-                            validShareLink={validShareLink}
-                        />
+                        <div>
+                            <h2 style={{color: 'white'}}> Wow, that is new shared collection!!!</h2>
+                            <CurrentlyApplyingCollection
+                                validUserId={validUserId}
+                                validCollectionId={validCollectionId}
+                                validShareLink={validShareLink}
+                            />
+                        </div>
                     )}
                 </div>
             </MainPage>

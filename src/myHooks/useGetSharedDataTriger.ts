@@ -5,17 +5,17 @@ import { collectionDataAPI } from "../RTKApi/collectionDataApi";
 import { hideCurrentCard, setTrainedCardId } from "../store/reducers/cardWindowReducer";
 import { UseChooseCollectionResponse } from "./collectionHooks/useResponses/useChooseCollectionResponse";
 
-export const useGetStockDataTriger = (
-  collectionId: string,
+export const useGetSharedDataTriger = (
+  shareLink: string,
   onChangeLoadingStatus: (value: boolean)=> void,
   openNotification: ((descriptionText: string) => void),
+  currentUserId?: string,
 ) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const [currentCollectionTriger] = collectionDataAPI.useGetCurrentCollectionToTrainMutation();
 
-  const currentUserId = localStorage.getItem('stockDataUserId') ?? '';
   const accessToken = localStorage.getItem('accessToken') || '';
 
   return () => {
@@ -25,13 +25,14 @@ export const useGetStockDataTriger = (
     onChangeLoadingStatus(true);
 
     currentCollectionTriger({
-      path: `api/choose-stock-collection/:${collectionId}/:${currentUserId}`,
+      path: currentUserId ? `api/choose-shared-collection/${shareLink}/${currentUserId}` : `api/choose-shared-collection/${shareLink}`,
       accessToken,
     })
     .unwrap()
     .then(
       (currentCollection) => {
         onChangeLoadingStatus(false);
+        console.log('currentCollectionTriger currentCollection',currentCollection)
         UseChooseCollectionResponse(currentCollection, dispatch);
       },
       () => {

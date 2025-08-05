@@ -31,7 +31,7 @@ export const useEditCollection = (_id: string, onChangeLoadingStatus: (value: bo
         }
 
         onChangeLoadingStatus(true)
-        getAllCollectionsAfterEditingCollectionTriger({path:EDIT_COLLECTION_ENDPOINT, editCollectionObj: editCollectionObj})
+        getAllCollectionsAfterEditingCollectionTriger({path: EDIT_COLLECTION_ENDPOINT, editCollectionObj})
         .unwrap()
         .then(
           (userCollections) => {

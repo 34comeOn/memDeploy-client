@@ -6,6 +6,10 @@ import { collectionDataAPI } from "../../../RTKApi/collectionDataApi";
 import { APPLY_SHARED_COLLECTION, RESPONSE_ERROR_TEXT, STOCK_DATA_USER_ID} from "../../../constants/stringConstants";
 import { CustomSpinner } from "../../atoms/customSpinner";
 import { notification } from "antd";
+import { cutBasicUserCollectionsInfo } from "../../../utils/utils";
+import { setUserBasicCollectionsInfo } from "../../../store/reducers/userCollectionsReducer";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import { getAccountStatusSelector, getUserIdSelector } from "../../../store/reducers/accountReducer";
 
 export type TapplySharedCollectionObj = {
     userId: string,
@@ -23,10 +27,21 @@ export const CurrentlyApplyingCollection = ({validUserId, validCollectionId, val
     const [requestSharedCollectionData, result] = collectionDataAPI.useGetApplySharedCollectionDataMutation();
     const { data: applyingCollection, isLoading, isSuccess, isError } = result;
 
+    
+    const dispatch = useAppDispatch();
+    
+    if (isSuccess && applyingCollection) {
+        localStorage.setItem('stockDataUserId', STOCK_DATA_USER_ID);
+        const cuttedSharedCollection = cutBasicUserCollectionsInfo([applyingCollection]);
+        dispatch(setUserBasicCollectionsInfo(cuttedSharedCollection));
+    }
+
+    const currentUserId = useAppSelector(getUserIdSelector);
+    const isUserAuthorized = useAppSelector(getAccountStatusSelector);
     useEffect(() => {
         const requestSharedCollectionDataOnLoad = async () => {
             try {
-                await requestSharedCollectionData({path: `${APPLY_SHARED_COLLECTION}/${validUserId}/${validCollectionId}/${validShareLink}`}).unwrap();
+                await requestSharedCollectionData({path: currentUserId && isUserAuthorized ? `${APPLY_SHARED_COLLECTION}/${validUserId}/${validCollectionId}/${validShareLink}/${currentUserId}` : `${APPLY_SHARED_COLLECTION}/${validUserId}/${validCollectionId}/${validShareLink}`}).unwrap();
             } catch (err) {
                 notification.error({
                     message: RESPONSE_ERROR_TEXT.SOMETHING_WENT_WRONG,
@@ -41,8 +56,6 @@ export const CurrentlyApplyingCollection = ({validUserId, validCollectionId, val
         return  <CustomSpinner isLoading={isLoading} />
     }
     if (isSuccess) {
-        localStorage.setItem('stockDataUserId', STOCK_DATA_USER_ID);
-
         return (
             <UserCollection
                 _id={applyingCollection._id || ''}
