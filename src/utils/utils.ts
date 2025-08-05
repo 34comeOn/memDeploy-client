@@ -17,6 +17,7 @@ export type TbasicCollectionInfo = {
     collectionImage?: string,
     collectionTitle: string,
     collectionAdminList: string[],
+    collectionShareLink?: string,
 }
 
 export type TcollectionItemComment = {
@@ -75,6 +76,7 @@ export type TuserCollectionData = {
     collectionСategories?: TcollectionСategory[],
     collectionTags?: TcollectionTag[],
     collectionData: TcollectionItemData[],
+    collectionShareLink?: string,
 }
 
 export type Tuser = {
@@ -192,6 +194,7 @@ export const cutBasicUserCollectionsInfo = (allUserCollections: TuserCollectionD
             collectionImage: collection.collectionColor,
             collectionTitle: collection.collectionTitle,
             collectionAdminList: collection.collectionAdminList,
+            collectionShareLink: collection.collectionShareLink,
         })
     });
 
@@ -319,13 +322,42 @@ export const makeOverlayProgress = (currentCollectionId: string, currentCardId: 
 
 
 export const cutWords = (title: string, maxLength: number ) => {
-    const cuttedWordsTitle = title.split(' ').map((word: string) => {
+    const cuttedWordsTitle = title?.split(' ').map((word: string) => {
         if (word.length > maxLength) {
-            return `${word.slice(0, maxLength)}...`
+            return `${word.slice(0, maxLength)}...`;
         }
 
-        return word
+        return word;
     });
 
-    return cuttedWordsTitle.join(' ')
+    return cuttedWordsTitle?.join(' ');
 }
+
+export const copyToClipboard = async (text: string) => {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        try {
+            await navigator.clipboard.writeText(text);
+            return true;
+        } catch (err) {
+            return false;
+            // send panic
+        }
+    } else {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.setAttribute('readonly', '');
+        textarea.style.position = 'absolute';
+        textarea.style.left = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+            document.execCommand('copy');
+            return true;
+        } catch (err) {
+            return false;
+            // send panic
+        }
+        document.body.removeChild(textarea);
+    }
+};
+  

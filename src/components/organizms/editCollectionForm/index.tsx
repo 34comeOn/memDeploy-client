@@ -16,7 +16,11 @@ export const EditCollectionForm = () => {
     const {isLoading, onChangeLoadingStatus} = useRequestLoading();
     const [contextHolder, openNotification] = useWarningNotification(RESPONSE_ERROR_TITLE.EDIT);
     const {_id, title, color} = useAppSelector(getEditCollectionSelector);
-    const onEditCollection = useEditCollection(_id, onChangeLoadingStatus, openNotification as ((descriptionText: string) => void));
+    const onEditCollection = useEditCollection(
+        _id,
+        onChangeLoadingStatus,
+        openNotification as ((descriptionText: string) => void),
+    );
 
     return (
         <Formik 

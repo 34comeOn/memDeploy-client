@@ -23,7 +23,7 @@ export const UseSubmitButtonToLogIn = (onChangeLoadingStatus: (value: boolean)=>
             email: values.email,
             password: values.password,
         }
-
+        
         onChangeLoadingStatus(true)
         getAllUserDataAfterLogInTriger({path:LOG_IN_USER_ENDPOINT, logInObject})
         .unwrap()
@@ -31,7 +31,7 @@ export const UseSubmitButtonToLogIn = (onChangeLoadingStatus: (value: boolean)=>
           (userData) => {
             localStorage.setItem('accessToken', JSON.stringify(userData.currentToken));
             onChangeLoadingStatus(false);
-            dispatch(logIn({userName: userData.userName, userEmail: userData.email,userId: userData._id || ' '}));
+            dispatch(logIn({userName: userData.userName, userEmail: userData.email, userId: userData._id || ' '}));
             dispatch(setUserBasicCollectionsInfo(cutBasicUserCollectionsInfo(userData.userCollectionsData)));
             navigate(`/${ROUTS_CONSTANTS.ALL_COLLECTIONS_PAGE}`);
           },
