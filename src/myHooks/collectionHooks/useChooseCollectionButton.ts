@@ -6,11 +6,7 @@ import { getUserIdSelector } from "../../store/reducers/accountReducer";
 import { hideCurrentCard, setTrainedCardId } from "../../store/reducers/cardWindowReducer";
 import { UseChooseCollectionResponse } from "./useResponses/useChooseCollectionResponse";
 
-export const useChooseCollectionButton = (
-    collectionId: string,
-    onChangeLoadingStatus: (value: boolean)=> void,
-    openNotification: ((descriptionText: string) => void),
-  ) => {
+export const useChooseCollectionButton = (collectionId: string, onChangeLoadingStatus: (value: boolean)=> void, openNotification: ((descriptionText: string) => void) ) => {
   const dispatch = useAppDispatch();
   const currentUserId = useAppSelector(getUserIdSelector);
   const [currentCollectionTriger] = collectionDataAPI.useGetCurrentCollectionToTrainMutation();

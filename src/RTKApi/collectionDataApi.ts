@@ -1,6 +1,3 @@
-import { TapplySharedCollectionObj } from '../components/organizms/currentlyApplyingCollection';
-import { TcreateShareLinkData } from '../myHooks/collectionHooks/useCreateShareLink';
-import { TdeleteShareLinkData } from '../myHooks/collectionHooks/useDeleteShareLink';
 import { TeditCollectionData } from '../myHooks/collectionHooks/useEditCollection';
 import { TcollectionItemData, TeditCollectionItemData, Tuser, TuserCollectionData } from '../utils/utils';
 import { rootAPI } from './rootApi';
@@ -60,14 +57,7 @@ export const collectionDataAPI = rootAPI.injectEndpoints({
       query(path) {
         return {
           url: `${path}`,
-        };
-      }
-    }),
-    getApplySharedCollectionData: build.mutation<TuserCollectionData, {path: string}>({
-      query(path) {
-        console.log('args.path',path)
-        return {
-          url: `${path.path}`,
+          
         };
       }
     }),
@@ -100,7 +90,7 @@ export const collectionDataAPI = rootAPI.injectEndpoints({
         };
       }
     }),
-    getCurrentCollectionToTrain: build.mutation<TuserCollectionData, {path: string, accessToken: string}>({
+    getCurrentCollectionToTrain: build.mutation<TuserCollectionData, {path:string, accessToken: string}>({
       query(args) {
         return {
           url: `${args.path}`,
@@ -138,16 +128,6 @@ export const collectionDataAPI = rootAPI.injectEndpoints({
         };
       }
     }),
-    deleteShareLink: build.mutation<string, {path: string, deleteShareLinkObj: TdeleteShareLinkData}>({
-      query(args) {
-        return {
-          url: `${args.path}`,
-          method: 'DELETE',
-          headers: {'Content-Type': 'application/json;charset=utf-8'},
-          body: JSON.stringify(args.deleteShareLinkObj)
-        };
-      }
-    }),
     putRepeatedCollectionItem: build.mutation<TuserCollectionData, {path: string, repeatObj: TrepeatObject}>({
       query(args) {
         return {
@@ -165,16 +145,6 @@ export const collectionDataAPI = rootAPI.injectEndpoints({
           method: 'PUT',
           headers: {'Content-Type': 'application/json;charset=utf-8'},
           body: JSON.stringify(args.editCollectionObj)
-        };
-      }
-    }),
-    putShareLink: build.mutation<string, {path: string, createShareLinkObj: TcreateShareLinkData}>({
-      query(args) {
-        return {
-          url: `${args.path}`,
-          method: 'PUT',
-          headers: {'Content-Type': 'application/json;charset=utf-8'},
-          body: JSON.stringify(args.createShareLinkObj)
         };
       }
     }),

@@ -1,58 +1,38 @@
 @import '/src/sass/variables.module.scss';
 @import '/src/sass/mixins.scss';
 
-.collection--buttons__wrapper {
-    display: flex;
-    height: 30px;
-    margin: 8px 20px 0 auto;
-    gap: 8px;
-
-    @include vp-1023 {
-        width: min-content;
-        margin-right: 16px;
-    } 
-}
-
-.share-link__button {
-    margin-right: 88px;
-
-    @include vp-1023 {
-        margin-right: 60px;
-    } 
-}
-
 .collection--title {
+    text-align: left; 
     display: block;
+    margin-top: 59px;
     margin-left: 50px;
-    margin-top: 20px;
     max-width: 210px;
-    text-align: left;
+    color: $colorFontWhite;
     font-size: 22px;
     font-weight: 500;
-    color: $colorFontWhite;
 
     @include vp-1023 {
         font-size: 18px;
+        margin-top: 43px;
         margin-left: 26px;
-        margin-top: 4px;
     } 
 }
 
 .collection--title::before {
     content: '';
     display: block;
-    width: 240px;
+    width: 220px;
     height: 1px;
     background-color: $colorFontWhite;
     position: absolute;
-    top: 48px;
+    top: 46px;
     left: 39px;
 
     @include vp-1023 {
         width: 164px;
-        top: 40px;
+        top: 38px;
         left: 19px;
-    }
+    } 
 }
 
 .collection--title::after {

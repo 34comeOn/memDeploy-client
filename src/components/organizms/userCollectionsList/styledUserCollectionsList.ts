@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { device } from "../../../global/theme";
 import variables from '../../../sass/variables.module.scss';
 
 export const StyledUserCollectionsList = styled.ul`
@@ -15,9 +14,4 @@ export const StyledUserCollectionsList = styled.ul`
     margin-left: 20px;
     margin-right: 20px;
     padding: 0px;
-
-    @media ${device.tablet} { 
-        margin-left: 0;
-        margin-right: 0;
-    }
 `
