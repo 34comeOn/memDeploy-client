@@ -27,7 +27,9 @@ export const ApplyShareLinkPage = () => {
 
     return(
         <div className='apply-share-link-page--container'>
-            <MainPage>
+            <MainPage
+                currentSharedCollectionId={validCollectionId}
+            >
                 <div style={{marginTop: '10px', marginBottom: '60px'}}>
                     {invalidShareLink ? (
                         <div style={{color: 'white'}}>

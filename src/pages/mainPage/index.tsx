@@ -11,12 +11,20 @@ import { getAccountStatusSelector } from "../../store/reducers/accountReducer";
 import { getBasicUserCollectionsInfoSelector } from "../../store/reducers/userCollectionsReducer";
 import { UserCollectionsList } from "../../components/organizms/userCollectionsList";
 
-export const MainPage = ({children}: {children?: React.ReactNode}) => {
+type Props = {
+    children?: React.ReactNode;
+    currentSharedCollectionId?: string;
+}
+
+export const MainPage = (props: Props) => {
+    const {children, currentSharedCollectionId} = props;
+
     const isMobile = useMediaQuery({ query: `${device.mobile}`});
     const isUserAuthorized = useAppSelector(getAccountStatusSelector);
 
     const allCollections = useAppSelector(getBasicUserCollectionsInfoSelector);
     const sharedCollections = allCollections.filter(collection => collection.collectionShareLink?.length && collection.collectionShareLink?.length > 0);
+    const sharedCollectionsWithoutCurrentApplyed = sharedCollections.filter(collection => collection._id !== currentSharedCollectionId);
 
     return(
         <div className='main-page--container'>
@@ -64,13 +72,13 @@ export const MainPage = ({children}: {children?: React.ReactNode}) => {
                     </Button>
                 </div>
             )}
-            {sharedCollections.length > 0 && !isUserAuthorized && (
+            {sharedCollectionsWithoutCurrentApplyed.length > 0 && !isUserAuthorized && (
                 <>
                     <p style={{color: 'white', fontSize: '16px', maxWidth: '960px', marginLeft: 'auto', marginRight: 'auto', marginTop: '45px', textAlign: 'center'}}>
                         {`These are collections, somebody shared with you.
                         Login or get an account to train them on other device and see train progress over there as well.`}
                     </p>
-                    <UserCollectionsList collections={sharedCollections} isSharedCollections={true} />
+                    <UserCollectionsList collections={sharedCollectionsWithoutCurrentApplyed} isSharedCollections={true} />
                 </>
             )}
         </div>
