@@ -6,6 +6,9 @@ export const LOG_IN_USER_ENDPOINT = 'api/log-in';
 export const REGISTER_USER_ENDPOINT = 'api/register';
 export const CREATE_NEW_COLLECTION_ENDPOINT = 'api/new-collection';
 export const EDIT_COLLECTION_ENDPOINT = 'api/edit-collection';
+export const APPLY_SHARED_COLLECTION = 'api/apply-collection-share-link';
+export const CREATE_SHARE_LINK = 'api/create-share-link';
+export const DELETE_SHARE_LINK = 'api/delete-share-link';
 export const CREATE_NEW_CARD_ENDPOINT = 'api/new-card';
 export const EDIT_CARD_ENDPOINT = 'api/edit-card';
 export const PUT_REPEATED_COLLECTION_ITEM_ENDPOINT = 'api/repeat';
@@ -22,6 +25,8 @@ export const LOCAL_STORAGE_KEYS_CONSTANTS = {
     USER_REPEAT_GROUPS: 'userRepeatGroups',
     USER_BASIC_COLLECTIONS_INFO: 'userBasicCollectionsInfo',
     FILTERS_LIST: 'filtersList',
+    CURRENT_COLLECTION_STOCK: 'isCurrentCollectionStock',
+    CURRENT_COLLECTION_SHARED: 'isCurrentCollectionShared',
 }
 
 export const MODAL_WINDOW_CONTENT_STRING_CONSTANTS = {
@@ -70,6 +75,8 @@ export const RESPONSE_ERROR_TITLE = {
     LOGOUT: 'Logout failed',
     LOG_IN: 'Login failed',
     REGISTRATION: 'Registration failed',
+    CREATE_SHARE_LINK: 'The link was not created',
+    DELETE_SHARE_LINK: 'Stop sharing collection was not applied, please contact our support team: memorizer.app.data@gmail.com',
 }
 
 export const ACTIVATION_REQUEST = {
@@ -112,6 +119,7 @@ export const RESPONSE_ERROR_TEXT = {
     EMAIL_ALREADY_EXIST: 'User with such e-mail already registred',
     ACCOUNT_NOT_ACTIVATED: 'Please verify your e-mail. Account not activated.',
     STOCK_COLLECTION_HAS_NOT_LOADED: 'Stock collection hasn`t loaded',
+    SHARED_COLLECTION_HAS_NOT_LOADED: 'Shared collection hasn`t loaded',
     AUTHORIZATION_FAILED: 'Authorization went wrong',
 }
 
@@ -128,6 +136,7 @@ export const ROUTS_CONSTANTS = {
     PROFILE_PAGE: 'profile',
     SETTINGS_PAGE: 'settings',
     SUPPORT_PAGE: 'support',
+    APPLY_SHARE_LINK_PAGE: 'apply_collection_share_link',
 }
 
 export const NAVIGATION_ITEMS_PATH = {
@@ -173,7 +182,7 @@ export const PAGE_CONTENT = {
     MAIN_PAGE_ADVANTAGE_FIRST: 'Make learning fun and attractive for your brain',
     MAIN_PAGE_ADVANTAGE_SECOND: 'Your data always in touch and ready for repeat',
     MAIN_PAGE_ADVANTAGE_THIRD: 'Build up and enjoy your progress',
-    MAIN_PAGE_TRY: 'Try our stock collections to check',
+    MAIN_PAGE_TRY: 'Use our stock collections to check',
     MAIN_PAGE_METHOD: 'OUR MEMORIZING METHOD',
     MAIN_PAGE_ACCOUNT_LINK: 'GET AN ACCOUNT FOR FREE',
     MAIN_PAGE_ACCOUNT_SECOND: 'To create your own collections',
