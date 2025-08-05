@@ -2,8 +2,9 @@ import styled from "styled-components";
 import { device } from '../../../global/theme/index';
 
 export const StyledMenuButton = styled.button`
-    width: 220px;
+    width: 180px;
     height: 55px;
+    font-size: 16px;
     background-color: ${props => props.color};
     border: none;
     margin: 8px auto 8px 39px;
@@ -13,7 +14,7 @@ export const StyledMenuButton = styled.button`
     cursor: pointer;
 
     @media ${device.laptop} { 
-        width: 140px;
+        width: 130px;
         height: 35px;
         margin: 4px auto 4px 30px;
         font-size: 11px;

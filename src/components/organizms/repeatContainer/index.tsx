@@ -5,23 +5,23 @@ import { getRepeatGroupsSelector } from '../../../store/reducers/collectionGroup
 import { StockRepeatList } from '../../molecules/stock/repeatList';
 import { REPEAT_LISTS_TITLE } from '../../../constants/stringConstants';
 import { useForceRender } from '../../../myHooks/utillsHooks/useForceRender';
-import { getAccountStatusSelector } from '../../../store/reducers/accountReducer';
-import { getCurrentCollectionSelector } from '../../../store/reducers/userCollectionsReducer';
+import { getCurrentCollectionSelector, getIsCurrentCollectionShared, getIsCurrentCollectionStock } from '../../../store/reducers/userCollectionsReducer';
 import { addOverlay, spreadCollectionData } from '../../../utils/utils';
 
 export const RepeatContainer = () => {
-  const accountStatus = useAppSelector(getAccountStatusSelector);
   const repeatGroups = useAppSelector(getRepeatGroupsSelector);
+
+  const isCollectionStock = useAppSelector(getIsCurrentCollectionStock);
+  const isCollectionShared = useAppSelector(getIsCurrentCollectionShared);
   
   const currentCollection = useAppSelector(getCurrentCollectionSelector);
   const { orgonizedGroupsOfCollection } = spreadCollectionData(addOverlay(currentCollection).collectionData);
-    
   // @ts-ignore
   const {forceState} = useForceRender();
 
   return (
     <StyledRepeatContainer>
-      {(accountStatus? repeatGroups: orgonizedGroupsOfCollection).map((group,index) => {
+      {((isCollectionStock || isCollectionShared) ? orgonizedGroupsOfCollection : repeatGroups).map((group,index) => {
         return(
           <StockRepeatList key={index} title={REPEAT_LISTS_TITLE[index]} list={group}/>
         )
