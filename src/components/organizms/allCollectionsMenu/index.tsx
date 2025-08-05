@@ -26,7 +26,7 @@ export const AllCollectionsMenu = () => {
                     <UserCollectionsList collections={userPersonalCollections} />
                     {sharedCollections.length > 0 && (
                         <>
-                            <h2 style={{color: 'white', marginLeft: '10px'}}>
+                            <h2 className='collections-page--caption'>
                                 Shared collections
                             </h2>
                             <UserCollectionsList collections={sharedCollections} isSharedCollections={true} />
