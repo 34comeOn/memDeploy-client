@@ -8,7 +8,7 @@ import { getAnswerVisibilitySelector, getCurrentCardSelector, toggleAnswerVisibi
 import { useDoneClickButton } from '../../../../myHooks/useDoneClickButton';
 import './style.scss';
 import { checkAdminPowers, cutWords, getCurrentUserEmailFromLStorage } from '../../../../utils/utils';
-import { getCurrentCollectionSelector, getIsCurrentCollectionShared, getIsCurrentCollectionStock } from '../../../../store/reducers/userCollectionsReducer';
+import { getCurrentCollectionSelector } from '../../../../store/reducers/userCollectionsReducer';
 import { DeleteCardButton } from '../../../atoms/deleteCardButton';
 import { EditCardButton } from '../../../atoms/editCardButton';
 import { useRequestLoading } from '../../../../myHooks/useRequestLoading';
@@ -32,9 +32,6 @@ export const StockCardWindow = () => {
     const userHasAdminPowersForCollection = checkAdminPowers(currentUserEmailFromLStorage?? '', currentCollectionAdminlist?? []);
     const currentCard = useAppSelector(getCurrentCardSelector);
     const isAnswerVisible = useAppSelector(getAnswerVisibilitySelector);
-
-    const isCollectionStock = useAppSelector(getIsCurrentCollectionStock);
-    const isCollectionShared = useAppSelector(getIsCurrentCollectionShared);
     
     const onDoneClickHandle = useDoneClickButton(currentCard,onChangeLoadingStatus, openDoneNotification as ((descriptionText: string) => void));
     const onDoneClickStockItem = useDoneClickButtonStockItem(currentCard, currentCollection);
@@ -44,7 +41,7 @@ export const StockCardWindow = () => {
     }
 
     const cuttedWordsTitle = cutWords(currentCard.collectionItemTitle, 30);
-console.log('!!! isCollectionStock',isCollectionStock)
+
     return (  
         <StyledCard>
             <span className='card--title'>{cuttedWordsTitle}</span>
@@ -75,17 +72,7 @@ console.log('!!! isCollectionStock',isCollectionStock)
             <>
                 {doneContextHolder}
             </>
-            <DoneButton 
-                disabled={currentCard.collectionItemTimesBeenRepeated >= 6}
-                // onClick={accountStatus && !(isCollectionStock || isCollectionShared) ? onDoneClickHandle : onDoneClickStockItem}
-                onClick={() => {
-                    if (accountStatus && !(isCollectionStock || isCollectionShared)) {
-                        onDoneClickHandle();
-                    } else {
-                        onDoneClickStockItem();
-                    }
-                }}
-            />
+            <DoneButton disabled={currentCard.collectionItemTimesBeenRepeated >= 6} onClick={accountStatus? onDoneClickHandle: onDoneClickStockItem}/>
         </StyledCard>
     )
 }

@@ -7,27 +7,28 @@ type TcollectionColor = {
   }
 
 export const StyledUserCollection = styled.li<TcollectionColor>`
-    position: relative;
+    min-width: 300px;
+    height: 250px;
+    background-color: ${props => props.color? props.color: variables.colorMenuPurple};
+    margin: 15px;
+    border-radius: 15px;
+    padding-bottom: 7px;
+
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    width: 300px;
-    height: 250px;
-    margin: 15px;
-    padding-bottom: 7px;
-    border-radius: 25px;
-    background-color: ${props => props.color? props.color: variables.colorMenuPurple};
+    justify-content: space-between;
+    position: relative;
     box-shadow: black 5px 5px 10px -4px;
     
     &:hover {
       cursor: pointer;
-      outline: 2px solid silver;
+      box-shadow: silver 3px 3px 6px -4px;
     }
 
     @media ${device.laptop} { 
+      min-width: 200px;
       width: 200px;
       height: 170px;
       margin: 8px;
-      border-radius: 15px;
     }
 `;

@@ -5,18 +5,14 @@ import { NodeIndexOutlined, RocketOutlined, SmileOutlined } from "@ant-design/ic
 import { useMediaQuery } from 'react-responsive';
 import './style.scss';
 import { device } from "../../global/theme";
+import { Link } from "react-router-dom";
 import { Button } from "antd";
 import { useAppSelector } from "../../app/hooks";
 import { getAccountStatusSelector } from "../../store/reducers/accountReducer";
-import { getBasicUserCollectionsInfoSelector } from "../../store/reducers/userCollectionsReducer";
-import { UserCollectionsList } from "../../components/organizms/userCollectionsList";
 
-export const MainPage = ({children}: {children?: React.ReactNode}) => {
+export const MainPage = () => {
     const isMobile = useMediaQuery({ query: `${device.mobile}`});
-    const isUserAuthorized = useAppSelector(getAccountStatusSelector);
-
-    const allCollections = useAppSelector(getBasicUserCollectionsInfoSelector);
-    const sharedCollections = allCollections.filter(collection => collection.collectionShareLink?.length && collection.collectionShareLink?.length > 0);
+    const isAuthorized = useAppSelector(getAccountStatusSelector);
 
     return(
         <div className='main-page--container'>
@@ -44,7 +40,6 @@ export const MainPage = ({children}: {children?: React.ReactNode}) => {
                     </span>
                 </div>
             </div>
-            {children}
             <div className="main-page--suggest__wrapper">
                 <span>
                     {PAGE_CONTENT.MAIN_PAGE_TRY}
@@ -54,7 +49,7 @@ export const MainPage = ({children}: {children?: React.ReactNode}) => {
                 </Button>
             </div>
             <MainPageCollections />
-            {!isUserAuthorized && (
+            {!isAuthorized && (
                 <div className={`${'main-page--suggest__wrapper'}`}>
                     <span>
                         {PAGE_CONTENT.MAIN_PAGE_ACCOUNT_SECOND} 
@@ -63,15 +58,6 @@ export const MainPage = ({children}: {children?: React.ReactNode}) => {
                         {PAGE_CONTENT.MAIN_PAGE_ACCOUNT_LINK}
                     </Button>
                 </div>
-            )}
-            {sharedCollections.length > 0 && !isUserAuthorized && (
-                <>
-                    <p style={{color: 'white', fontSize: '16px', maxWidth: '960px', marginLeft: 'auto', marginRight: 'auto', marginTop: '45px', textAlign: 'center'}}>
-                        {`These are collections, somebody shared with you.
-                        Login or get an account to train them on other device and see train progress over there as well.`}
-                    </p>
-                    <UserCollectionsList collections={sharedCollections} isSharedCollections={true} />
-                </>
             )}
         </div>
     )

@@ -28,17 +28,15 @@ const size = {
 }
 
 export const device = {
-  isLaptop: `(min-width: ${size.laptop})`,
-
   mobile: `(max-width: ${size.mobile})`,
-  tablet: `(max-width: ${size.tablet})`,
   laptop: `(max-width: ${size.laptop})`,
-  desktop: `(max-width: ${size.desktop})`,
-  
+
   mobileS: `(max-width: ${size.mobileS})`,
   mobileM: `(max-width: ${size.mobileM})`,
   mobileL: `(max-width: ${size.mobileL})`,
+  tablet: `(max-width: ${size.tablet})`,
   laptopM: `(max-width: ${size.laptopM})`,
   laptopL: `(max-width: ${size.laptopL})`,
+  desktop: `(max-width: ${size.desktop})`,
   desktopL: `(max-width: ${size.desktop})`
 };
