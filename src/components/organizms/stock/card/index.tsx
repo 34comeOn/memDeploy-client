@@ -44,7 +44,7 @@ export const StockCardWindow = () => {
     }
 
     const cuttedWordsTitle = cutWords(currentCard.collectionItemTitle, 30);
-console.log('!!! isCollectionStock',isCollectionStock)
+
     return (  
         <StyledCard>
             <span className='card--title'>{cuttedWordsTitle}</span>
