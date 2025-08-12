@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom';
 import { Header } from './components/organizms/header';
 import { EditModalWindow } from './components/organizms/editModal';
 import { useLocation } from 'react-router-dom';
+import { Footer } from './components/organizms/footer';
 
 function ScrollToTop() {
     const { pathname } = useLocation();
@@ -24,6 +25,7 @@ const App = () =>
         <Outlet />
         <EditModalWindow />
     </div>
+    <Footer />
 </>
 
 export default App;
