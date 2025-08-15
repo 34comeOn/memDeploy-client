@@ -52,7 +52,9 @@ export const MainPage = (props: Props) => {
                     </span>
                 </div>
             </div>
-            {children}
+            <div className="main-page--children__wrapper">
+                {children}
+            </div>
             <div className="main-page--suggest__wrapper">
                 <span>
                     {PAGE_CONTENT.MAIN_PAGE_TRY}
