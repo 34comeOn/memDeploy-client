@@ -28,33 +28,35 @@ export const MainPage = (props: Props) => {
 
     return(
         <div className='main-page--container'>
-            <h1 className='main-page--caption'>
-                {PAGE_CONTENT.MAIN_PAGE_TITLE}
-            </h1>
-            <div className="block"></div>
-            <div className="main-page--advantages__container">
-                <div className="main-page--advantage__wrapper">
-                    {!isMobile && <SmileOutlined />}
-                    <span className="main-page--advantage__text">
-                        {PAGE_CONTENT.MAIN_PAGE_ADVANTAGE_FIRST}
-                    </span>
-                </div>
-                <div className="main-page--advantage__wrapper">
-                    {!isMobile && <NodeIndexOutlined />}
-                    <span className="main-page--advantage__text">
-                        {PAGE_CONTENT.MAIN_PAGE_ADVANTAGE_SECOND}
-                    </span>
-                </div>
-                <div className="main-page--advantage__wrapper">
-                    {!isMobile && <RocketOutlined />}
-                    <span className="main-page--advantage__text">
-                        {PAGE_CONTENT.MAIN_PAGE_ADVANTAGE_THIRD}
-                    </span>
-                </div>
-            </div>
-            <div className="main-page--children__wrapper">
+            {!children && (
+                <>
+                    <h1 className='main-page--caption'>
+                        {PAGE_CONTENT.MAIN_PAGE_TITLE}
+                    </h1>
+                    <div className="block"></div>
+                    <div className="main-page--advantages__container">
+                        <div className="main-page--advantage__wrapper">
+                            {!isMobile && <SmileOutlined />}
+                            <span className="main-page--advantage__text">
+                                {PAGE_CONTENT.MAIN_PAGE_ADVANTAGE_FIRST}
+                            </span>
+                        </div>
+                        <div className="main-page--advantage__wrapper">
+                            {!isMobile && <NodeIndexOutlined />}
+                            <span className="main-page--advantage__text">
+                                {PAGE_CONTENT.MAIN_PAGE_ADVANTAGE_SECOND}
+                            </span>
+                        </div>
+                        <div className="main-page--advantage__wrapper">
+                            {!isMobile && <RocketOutlined />}
+                            <span className="main-page--advantage__text">
+                                {PAGE_CONTENT.MAIN_PAGE_ADVANTAGE_THIRD}
+                            </span>
+                        </div>
+                    </div>
+                </>
+            )}
                 {children}
-            </div>
             <div className="main-page--suggest__wrapper">
                 <span>
                     {PAGE_CONTENT.MAIN_PAGE_TRY}
