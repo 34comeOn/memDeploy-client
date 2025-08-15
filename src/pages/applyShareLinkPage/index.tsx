@@ -30,20 +30,22 @@ export const ApplyShareLinkPage = () => {
             <MainPage
                 currentSharedCollectionId={validCollectionId}
             >
-                <div style={{marginTop: '10px', marginBottom: '60px'}}>
+                <div className='apply-share-link-page--content__wrapper'>
                     {invalidShareLink ? (
-                        <div style={{color: 'white'}}>
+                        <h2 className='apply-share-link-page--caption'>
                             Sorry, the share link is invalid, and collection could not be downloaded and attached!
-                        </div>
+                        </h2>
                     ) : (
-                        <div>
-                            <h2 style={{color: 'white'}}> Wow, that is new shared collection!!!</h2>
-                            <CurrentlyApplyingCollection
-                                validUserId={validUserId}
-                                validCollectionId={validCollectionId}
-                                validShareLink={validShareLink}
-                            />
-                        </div>
+                        <>
+                            <h2 className='apply-share-link-page--caption'> Wow, that is new shared collection for you!</h2>
+                            <div className="striped-bg">
+                                <CurrentlyApplyingCollection
+                                    validUserId={validUserId}
+                                    validCollectionId={validCollectionId}
+                                    validShareLink={validShareLink}
+                                />
+                            </div>
+                        </>
                     )}
                 </div>
             </MainPage>

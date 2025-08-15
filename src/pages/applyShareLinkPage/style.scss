@@ -6,25 +6,8 @@
     flex-direction: column;
 }
 
-.apply-share-link-page--caption {
-    color: $colorFontWhite;
-    font-size: 52px;
-    font-weight: 300;
-    margin: 40px auto;
-    text-align: center;
-
-    @include vp-1023 {
-        font-size: 32px;
-        margin: 22px auto;
-    } 
-
-    @include vp-767 {
-        font-size: 24px;
-    } 
-
-    @include vp-374 {
-        font-size: 18px;
-    } 
+.apply-share-link-page--content__wrapper {
+    margin-bottom: 30px;
 }
 
 .apply-share-link-page--text {
@@ -55,4 +38,54 @@
     border-radius: 8px;
     margin: auto 20px;
     width: fit-content;
+}
+
+.apply-share-link-page--caption {
+    max-width: 900px;
+    margin: 0 auto 30px auto;
+    padding: 0 40px;
+    color: $colorFontWhite;
+    font-size: 38px;
+    font-weight: 400;
+    text-align: center;
+
+    @include vp-1023 {
+        font-size: 28px;
+        margin: 0 auto 20px auto;
+        padding: 0 25px;
+    } 
+
+    @include vp-599 {
+        padding: 0;
+        font-size: 18px;
+    } 
+}
+
+@keyframes slide-down{
+    from { background-position: 0 0 }
+    to { background-position: 0 40px }
+}
+
+.striped-bg {
+    width: min-content;
+    margin: auto;
+    padding: 10px;
+    border-radius: 15px;
+    inset: 0;
+    overflow: hidden;
+    background:
+      repeating-linear-gradient(
+        165deg,
+        #fe5a91 0,
+        #fe5a91 20px,
+        #2f9696 20px,
+        #2f9696 calc(20px * 2)
+      );
+    background-size: auto 40px;
+    animation: slide-down 0.5s linear infinite;
+
+    @include vp-1023 {
+        padding: 6px;
+        border-radius: 10px;
+    }
 }
