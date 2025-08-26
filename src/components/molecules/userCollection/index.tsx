@@ -18,6 +18,7 @@ import { ShareLinkCollectionButton } from "../../atoms/shareLinkCollectionButton
 import { useDeleteShareLink } from "../../../myHooks/collectionHooks/useDeleteShareLink";
 import { setCurrentCollectionShared, setCurrentCollectionStock } from "../../../store/reducers/userCollectionsReducer";
 import { useGetSharedDataTriger } from "../../../myHooks/useGetSharedDataTriger";
+import { DeleteSharedCollectionButton } from "../../atoms/deleteSharedCollectionButton";
 
 type Props = {
     title: string, 
@@ -27,6 +28,8 @@ type Props = {
     shareLink: string,
     isSharedCollection: boolean,
     isStockCollection: boolean,
+    showUnfollowIcon?: boolean,
+    isShowingAnimation?: boolean,
 }
 
 export const UserCollection = (props: Props) => {
@@ -38,6 +41,8 @@ export const UserCollection = (props: Props) => {
         shareLink,
         isSharedCollection,
         isStockCollection,
+        showUnfollowIcon,
+        isShowingAnimation = false,
     } = props;
 
     const shortTitle = cutWords(title, 19);
@@ -140,32 +145,35 @@ export const UserCollection = (props: Props) => {
 
     const dispatch = useAppDispatch();
 
+    const onClickHandler = () => {
+        if (isStockCollection) {
+            getDataFromLocalStorageByClick();
+        } else if (isSharedCollection) {
+            if (isUserAuthorized) {
+                getSharedDataWithDbProgressByClick();
+            } else {
+                getSharedDataWithLocalStorageProgressByClick();
+            }
+        } else {
+            getDataByClick();
+        }
+
+        if (isStockCollection) {
+            dispatch(setCurrentCollectionStock(true));
+        } else if (isSharedCollection) {
+            dispatch(setCurrentCollectionShared(true));
+        } else {
+            dispatch(setCurrentCollectionStock(false));
+            dispatch(setCurrentCollectionShared(false));
+        }
+    }
+
     return(
         <>
             <StyledUserCollection 
                 color={color}
-                onClick={() => {
-                    if (isStockCollection) {
-                        getDataFromLocalStorageByClick();
-                    } else if (isSharedCollection) {
-                        if (isUserAuthorized) {
-                            getSharedDataWithDbProgressByClick();
-                        } else {
-                            getSharedDataWithLocalStorageProgressByClick();
-                        }
-                    } else {
-                        getDataByClick();
-                    }
-
-                    if (isStockCollection) {
-                        dispatch(setCurrentCollectionStock(true));
-                    } else if (isSharedCollection) {
-                        dispatch(setCurrentCollectionShared(true));
-                    } else {
-                        dispatch(setCurrentCollectionStock(false));
-                        dispatch(setCurrentCollectionShared(false));
-                    }
-                }}
+                isShowingAnimation={isShowingAnimation}
+                onClick={onClickHandler}
             >
                 <div className='collection--buttons__wrapper'>
                     {userHasAdminPowersForCollection && !isSharedCollection && (
@@ -173,6 +181,15 @@ export const UserCollection = (props: Props) => {
                             <ShareLinkCollectionButton showModal={showModal}/>
                             <EditCollectionButton _id={_id} title={title} color={color} />
                             <DeleteCollectionButton 
+                                onChangeLoadingStatus={onChangeLoadingStatus}
+                                openNotification={openDeleteNotification as ((descriptionText: string) => void)}
+                                _id={_id} 
+                            />
+                        </>
+                    )}
+                    {isSharedCollection && showUnfollowIcon && (
+                        <>
+                            <DeleteSharedCollectionButton 
                                 onChangeLoadingStatus={onChangeLoadingStatus}
                                 openNotification={openDeleteNotification as ((descriptionText: string) => void)}
                                 _id={_id} 

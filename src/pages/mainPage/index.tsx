@@ -82,7 +82,7 @@ export const MainPage = (props: Props) => {
                         {`These are collections, somebody shared with you.
                         Login or get an account to train them on other device and see train progress over there as well.`}
                     </p>
-                    <UserCollectionsList collections={sharedCollectionsWithoutCurrentApplyed} isSharedCollections={true} />
+                    <UserCollectionsList collections={sharedCollectionsWithoutCurrentApplyed} isSharedCollections={true} showUnfollowIcon={true} />
                 </>
             )}
         </div>

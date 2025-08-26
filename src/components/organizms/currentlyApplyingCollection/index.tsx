@@ -21,20 +21,21 @@ type Props = {
     validUserId?: string,
     validCollectionId?: string,
     validShareLink?: string,
+    isShowingAnimation?: boolean,
 }
 
-export const CurrentlyApplyingCollection = ({validUserId, validCollectionId, validShareLink}: Props) => {
+export const CurrentlyApplyingCollection = ({validUserId, validCollectionId, validShareLink, isShowingAnimation = false}: Props) => {
     const [requestSharedCollectionData, result] = collectionDataAPI.useGetApplySharedCollectionDataMutation();
     const { data: applyingCollection, isLoading, isSuccess, isError } = result;
 
-    
     const dispatch = useAppDispatch();
-    
-    if (isSuccess && applyingCollection) {
-        localStorage.setItem('stockDataUserId', STOCK_DATA_USER_ID);
-        const cuttedSharedCollection = cutBasicUserCollectionsInfo([applyingCollection]);
-        dispatch(setUserBasicCollectionsInfo(cuttedSharedCollection));
-    }
+    useEffect(() => {
+        if (isSuccess && applyingCollection) {
+            localStorage.setItem('stockDataUserId', STOCK_DATA_USER_ID);
+            const cuttedSharedCollection = cutBasicUserCollectionsInfo([applyingCollection]);
+            dispatch(setUserBasicCollectionsInfo(cuttedSharedCollection));
+        }
+    }, [isSuccess, applyingCollection])
 
     const currentUserId = useAppSelector(getUserIdSelector);
     const isUserAuthorized = useAppSelector(getAccountStatusSelector);
@@ -57,16 +58,20 @@ export const CurrentlyApplyingCollection = ({validUserId, validCollectionId, val
     }
     if (isSuccess) {
         return (
-            <UserCollection
-                _id={applyingCollection._id || ''}
-                key={applyingCollection._id || nanoid()}
-                title={applyingCollection.collectionTitle}
-                color={applyingCollection.collectionColor || STOCK_COLLECTION_COLOR}
-                adminList={applyingCollection.collectionAdminList}
-                isSharedCollection={true}
-                isStockCollection={false}
-                shareLink={applyingCollection.collectionShareLink || ''}
-            /> 
+            <div style={{margin: 'auto', width: 'min-content'}}>
+                <UserCollection
+                    _id={applyingCollection._id || ''}
+                    key={applyingCollection._id || nanoid()}
+                    title={applyingCollection.collectionTitle}
+                    color={applyingCollection.collectionColor || STOCK_COLLECTION_COLOR}
+                    adminList={applyingCollection.collectionAdminList}
+                    isSharedCollection={true}
+                    showUnfollowIcon={false}
+                    isStockCollection={false}
+                    shareLink={applyingCollection.collectionShareLink || ''}
+                    isShowingAnimation={isShowingAnimation}
+                /> 
+            </div>
         );
     }
     if (isError) {

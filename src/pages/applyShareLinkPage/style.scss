@@ -67,31 +67,3 @@
     } 
 }
 
-@keyframes slide-down{
-    from { background-position: 0 0 }
-    to { background-position: 0 40px }
-}
-
-.striped-bg {
-    width: min-content;
-    margin: auto;
-    padding: 10px;
-    border-radius: 15px;
-    inset: 0;
-    overflow: hidden;
-    background:
-      repeating-linear-gradient(
-        165deg,
-        #fe5a91 0,
-        #fe5a91 20px,
-        #2f9696 20px,
-        #2f9696 calc(20px * 2)
-      );
-    background-size: auto 40px;
-    animation: slide-down 0.5s linear infinite;
-
-    @include vp-1023 {
-        padding: 6px;
-        border-radius: 10px;
-    }
-}

@@ -38,13 +38,12 @@ export const ApplyShareLinkPage = () => {
                     ) : (
                         <>
                             <h2 className='apply-share-link-page--caption'> Wow, that is new shared collection!</h2>
-                            <div className="striped-bg">
-                                <CurrentlyApplyingCollection
-                                    validUserId={validUserId}
-                                    validCollectionId={validCollectionId}
-                                    validShareLink={validShareLink}
-                                />
-                            </div>
+                            <CurrentlyApplyingCollection
+                                validUserId={validUserId}
+                                validCollectionId={validCollectionId}
+                                validShareLink={validShareLink}
+                                isShowingAnimation={true}
+                            />
                         </>
                     )}
                 </div>
