@@ -4,6 +4,15 @@
 .main-page--container {
     display: flex;
     flex-direction: column;
+    padding: 0 40px;
+
+    @include vp-1023 {
+        padding: 0 25px;
+    } 
+
+    @include vp-767 {
+        padding: 0 10px;
+    } 
 }
 
 .main-page--caption {
@@ -154,9 +163,6 @@
     color: $colorContrast;
   };
 }
-//   &:first-child > .main-page--advantage__text {
-//     border-radius:10px;
-// };
 
 .main-page--advantage__wrapper {
   display: flex;
@@ -327,30 +333,29 @@
 }
 
 .block {
-    z-index: -1;
+  z-index: -1;
+  width: 325px;
+  height: 43px;
+  margin-left: 42px;
+  border-radius: 14px;
+  background-color: $colorContrastBackground;
+  animation: moveAndResizeDesktop 10s linear infinite;
+
+  @include vp-1023 {
     width: 325px;
-    height: 43px;
-    margin-left: 42px;
-    border-radius: 14px;
-    background-color: $colorContrastBackground;
-    animation: moveAndResizeDesktop 10s linear infinite;
+    height: 30px;
+    margin-left: 35px;
+    border-radius: 10px;
+    animation: moveAndResizeTablet 10s linear infinite;
+  } 
 
-    @include vp-1023 {
-      width: 325px;
-      height: 30px;
-      margin-left: 35px;
-      border-radius: 10px;
-      animation: moveAndResizeTablet 10s linear infinite;
-    } 
+  @include vp-599 {
+    margin-left: 5px;
+    animation: moveAndResizeMobile 10s linear infinite;
+  }
 
-    @include vp-599 {
-      margin-left: 5px;
-      animation: moveAndResizeMobile 10s linear infinite;
-    }
-
-    @include vp-374 {
-      background-color: transparent;
-      animation: none;
-    } 
+  @include vp-374 {
+    background-color: transparent;
+    animation: none;
+  } 
 }
-  

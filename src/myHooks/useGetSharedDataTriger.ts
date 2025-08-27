@@ -32,7 +32,6 @@ export const useGetSharedDataTriger = (
     .then(
       (currentCollection) => {
         onChangeLoadingStatus(false);
-        console.log('currentCollectionTriger currentCollection',currentCollection)
         UseChooseCollectionResponse(currentCollection, dispatch);
       },
       () => {

@@ -172,7 +172,9 @@ export const ROUT_PROTECTION_TEXT = {
 
 export const DELETE_CONFIRM = {
     DELETE_COLLECTION_TITLE: 'Delete the collection',
+    DELETE_SHARED_COLLECTION_TITLE: 'Stop following collection',
     DELETE_COLLECTION_TEXT: 'Are you sure to delete this collection forever?',
+    DELETE_SHARED_COLLECTION_TEXT: 'Are you sure to stop following this collection?',
     DELETE_CARD_TITLE: 'Delete the card',
     DELETE_CARD_TEXT: 'Are you sure to delete this card forever?',
 }

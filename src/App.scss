@@ -15,7 +15,6 @@ body[class="ReactModal__Body--open"] {
 .App {
   text-align: center;
   background-color: $colorBackgroundDark;
-  min-height: 100vh;
   border-top: 1px solid transparent;
   margin: 0;
   padding: 0 25px;
@@ -26,8 +25,17 @@ body[class="ReactModal__Body--open"] {
 }
 
 .App--container__page {
+  flex: 1 0 auto;
   margin-top: 90px;
-  margin-bottom: 20px;
+  margin-bottom: 90px;
+
+  @include vp-1023 {
+    margin-bottom: 60px;
+  } 
+
+  @include vp-767 {
+    margin-bottom: 40px;
+  } 
 }
 
 .App--button__getData:hover {
@@ -39,11 +47,9 @@ body[class="ReactModal__Body--open"] {
 }
 
 #root {
-  margin: 0 20px;
-
-  @include vp-599 {
-    margin: 0 10px;
-  } 
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 body {

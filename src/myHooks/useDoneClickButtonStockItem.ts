@@ -11,7 +11,6 @@ export const useDoneClickButtonStockItem = (currentCard: TcollectionItemData, cu
     // @ts-ignore
     const {getForceRender} =  useForceRender();
     return () => {
-        console.log('return useDoneClickButtonStockItem')
         dispatch(setTrainedCardId(currentCard._id || ''))
         dispatch(removeContentFromModalWindow()); 
         dispatch(hideModalWindow()); 

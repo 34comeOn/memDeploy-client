@@ -23,13 +23,17 @@ export const AllCollectionsMenu = () => {
                     <CreateNewCollectionButton disabled={!accountStatus} color={variables.colorDecorBright}>
                         Create new collection
                     </ CreateNewCollectionButton>
-                    <UserCollectionsList collections={userPersonalCollections} />
+                    <UserCollectionsList collections={userPersonalCollections} showUnfollowIcon={false} />
                     {sharedCollections.length > 0 && (
                         <>
-                            <h2 style={{color: 'white', marginLeft: '10px'}}>
+                            <h2 className='collections-page--caption'>
                                 Shared collections
                             </h2>
-                            <UserCollectionsList collections={sharedCollections} isSharedCollections={true} />
+                            <UserCollectionsList
+                                collections={sharedCollections}
+                                isSharedCollections={true}
+                                showUnfollowIcon={true}
+                            />
                         </>
                     )}
                 </>

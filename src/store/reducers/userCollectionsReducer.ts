@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { STOCK_BASIC_COLLECTION_INFO, STOCK_COLLECTION} from "../../constants/stockConstants";
+import { STOCK_COLLECTION } from "../../constants/stockConstants";
 import { LOCAL_STORAGE_KEYS_CONSTANTS } from "../../constants/stringConstants";
 import { TbasicCollectionInfo, TuserCollectionData } from "../../utils/utils";
 
@@ -57,6 +57,10 @@ const userCollectionsSlice = createSlice({
             localStorage.setItem(LOCAL_STORAGE_KEYS_CONSTANTS.USER_BASIC_COLLECTIONS_INFO, JSON.stringify(prevBasicCollectionsInfo));
             state.basicUserCollectionsInfo = getBasicUserCollectionsInfo();
         },
+        updateBasicCollectionsInfoAfterDelete(state, action: PayloadAction<TbasicCollectionInfo[]>) {
+            localStorage.setItem(LOCAL_STORAGE_KEYS_CONSTANTS.USER_BASIC_COLLECTIONS_INFO, JSON.stringify(action.payload));
+            state.basicUserCollectionsInfo = getBasicUserCollectionsInfo();
+        },
         addShareLinkForBasicCollectionsInfo(state, action: PayloadAction<{currentCollectionId: string, collectionShareLink: string}>) {
             const prevBasicCollectionsInfo = getBasicUserCollectionsInfo();
             const apdatedBasicCollectionsInfo = prevBasicCollectionsInfo.map((collectionInfo: TbasicCollectionInfo) => {
@@ -110,6 +114,7 @@ export default userCollectionsSlice.reducer;
 
 export const {
     setUserBasicCollectionsInfo,
+    updateBasicCollectionsInfoAfterDelete,
     removeUserBasicCollectionsInfo,
     setAllUserCollections, 
     setCurrentCollection,

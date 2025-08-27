@@ -8,10 +8,12 @@ import { TbasicCollectionInfo } from "../../../utils/utils";
 type Props = {
     collections: TbasicCollectionInfo[];
     isSharedCollections?: boolean;
+    showUnfollowIcon: boolean;
 }
 
 export const UserCollectionsList = (props: Props) => {
-    const { collections, isSharedCollections } = props;
+    const { collections, isSharedCollections, showUnfollowIcon } = props;
+
     return (
         <StyledUserCollectionsList>
             {collections.map(item =>
@@ -24,6 +26,7 @@ export const UserCollectionsList = (props: Props) => {
                     shareLink={item.collectionShareLink || ''}
                     isSharedCollection={isSharedCollections || false}
                     isStockCollection={false}
+                    showUnfollowIcon={showUnfollowIcon}
                 ></UserCollection>
             )}
         </ StyledUserCollectionsList >

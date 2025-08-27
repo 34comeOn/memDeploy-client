@@ -65,7 +65,6 @@ export const collectionDataAPI = rootAPI.injectEndpoints({
     }),
     getApplySharedCollectionData: build.mutation<TuserCollectionData, {path: string}>({
       query(path) {
-        console.log('args.path',path)
         return {
           url: `${path.path}`,
         };
