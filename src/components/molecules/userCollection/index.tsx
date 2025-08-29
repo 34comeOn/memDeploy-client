@@ -45,6 +45,8 @@ export const UserCollection = (props: Props) => {
         isShowingAnimation = false,
     } = props;
 
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
     const shortTitle = cutWords(title, 19);
 
     const [openModal, setOpenModal] = useState(false);
@@ -174,6 +176,7 @@ export const UserCollection = (props: Props) => {
                 color={color}
                 isShowingAnimation={isShowingAnimation}
                 onClick={onClickHandler}
+                isSafari={isSafari}
             >
                 <div className='collection--buttons__wrapper'>
                     {userHasAdminPowersForCollection && !isSharedCollection && (

@@ -5,6 +5,7 @@ import { device } from '../../../global/theme/index';
 type TcollectionColor = {
     color: string;
     isShowingAnimation?: boolean;
+    isSafari?: boolean;
   }
 
 export const StyledUserCollection = styled.li<TcollectionColor>`
@@ -32,7 +33,7 @@ export const StyledUserCollection = styled.li<TcollectionColor>`
     }
 
     &::before, &::after {
-      background-image: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0195, #ff4545);
+      background-image: ${props => props.isSafari ? 'none': 'conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0195, #ff4545)'};
       animation: 2s spin linear infinite;
       content: ${props => props.isShowingAnimation ?  '""': ''};
       position: absolute;
