@@ -22,7 +22,7 @@ export const StyledUserCollection = styled.li<TcollectionColor>`
     
     &:hover {
       cursor: pointer;
-      outline: 2px solid silver;
+      box-shadow: 0 0 0 2px silver;
     }
 
     @property --angle{
